@@ -11,6 +11,11 @@ class _FooterState extends State<Footer> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    return BottomNavigationBar(
+      items: const [
+        BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
+        BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
+      ]
+    );
   }
 }
