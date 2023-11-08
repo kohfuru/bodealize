@@ -48,25 +48,35 @@ class _HomePageState extends State<HomePage> {
               return event_data[date] ?? [];
             },
           ),
-          SizedBox(
-            width: 350,
-            child: Container(
-              margin: const EdgeInsets.only(left: 10),
-              child: const TextField(
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(
-                      borderSide: BorderSide(
-                        color: Colors.black,
-                      )
-                  ),
-                  contentPadding: EdgeInsets.symmetric(
-                    vertical: 4,
-                    horizontal: 4,
+          Row(
+            children: [
+              Container(
+                width: 325,
+                margin: const EdgeInsets.only(left: 10),
+                child: const TextField(
+                  decoration: InputDecoration(
+                    border: OutlineInputBorder(
+                        borderSide: BorderSide(
+                          color: Colors.black,
+                        )
+                    ),
+                    contentPadding: EdgeInsets.symmetric(
+                      vertical: 4,
+                      horizontal: 4,
+                    ),
                   ),
                 ),
               ),
-            ),
-          )
+              Container(
+                // width: 100,
+                margin: const EdgeInsets.only(left: 10),
+                child: ElevatedButton(
+                  onPressed: () {},
+                  child: const Text('button'),
+                ),
+              )
+            ]
+          ),
         ],
       )
     );
