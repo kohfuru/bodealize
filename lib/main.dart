@@ -1,4 +1,4 @@
-import 'package:bodealize/footer.dart';
+// import 'package:bodealize/footer.dart';
 import 'package:bodealize/home.dart';
 import 'package:flutter/material.dart';
 

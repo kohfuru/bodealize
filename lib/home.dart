@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:table_calendar/table_calendar.dart';
 import 'package:bodealize/calender.dart';
-import 'package:bodealize/input_form.dart';
-import 'package:bodealize/list.dart';
+import 'package:bodealize/memo.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key, required this.title});
@@ -29,23 +27,25 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         title: Text(user_name),
       ),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          CalendarWidget(
-            focusedDay: _focusedDay,
-            selectedDay: _selectedDay,
-            eventData: event_data,
-            onDaySelected: (selectedDay, focusedDay) {
-              setState(() {
-                _selectedDay = selectedDay;
-                _focusedDay = focusedDay;
-              });
-            },
-          ),
-          const InputForm(),
-        ],
-      )
+      body: Center(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            CalendarWidget(
+              focusedDay: _focusedDay,
+              selectedDay: _selectedDay,
+              eventData: event_data,
+              onDaySelected: (selectedDay, focusedDay) {
+                setState(() {
+                  _selectedDay = selectedDay;
+                  _focusedDay = focusedDay;
+                });
+              },
+            ),
+            const MemoWidget(),
+          ],
+        ),
+      ),
     );
   }
 }
