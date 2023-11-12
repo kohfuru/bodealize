@@ -51,6 +51,7 @@ class _MemoWidgetState extends State<MemoWidget> {
                     setState(() {
                       memo.add(myController.text);
                     });
+                    myController.clear();
                   },
                   child: const Text('button'),
                 ),
