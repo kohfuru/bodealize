@@ -9,6 +9,13 @@ class MemoWidget extends StatefulWidget {
 
 class _MemoWidgetState extends State<MemoWidget> {
   var memo = <String>[];
+  final myController = TextEditingController();
+
+  @override
+  void dispose() {
+    myController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -20,18 +27,20 @@ class _MemoWidgetState extends State<MemoWidget> {
               Container(
                 width: 300,
                 margin: const EdgeInsets.only(left: 10),
-                child: const TextField(
-                  decoration: InputDecoration(
+                child: TextField(
+                  decoration: const InputDecoration(
                     border: OutlineInputBorder(
                       borderSide: BorderSide(
                         color: Colors.black,
                       )
                     ),
+                    hintText: 'Enter a search term',
                     contentPadding: EdgeInsets.symmetric(
                       vertical: 4,
                       horizontal: 4,
                     ),
                   ),
+                  controller: myController,
                 ),
               ),
               Container(
@@ -40,7 +49,7 @@ class _MemoWidgetState extends State<MemoWidget> {
                 child: ElevatedButton(
                   onPressed: () {
                     setState(() {
-                      memo.add("new memo");
+                      memo.add(myController.text);
                     });
                   },
                   child: const Text('button'),

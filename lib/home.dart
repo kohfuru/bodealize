@@ -27,7 +27,7 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         title: Text(user_name),
       ),
-      body: Center(
+      body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
