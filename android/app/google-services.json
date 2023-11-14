@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "153845399649",
+    "project_id": "bodealize",
+    "storage_bucket": "bodealize.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:153845399649:android:deeab24ead17f3830e2a20",
+        "android_client_info": {
+          "package_name": "com.example.bodealize"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDSNSNaLgL-mucMjVePGusXi9GCWLGgRSc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
