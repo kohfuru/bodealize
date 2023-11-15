@@ -22,7 +22,7 @@ class _HomePageState extends State<HomePage> {
           )
         ),
       ),
-      body: CalendarWidget(),
+      body: const CalendarWidget(),
     );
   }
 }

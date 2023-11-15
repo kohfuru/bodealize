@@ -13,12 +13,17 @@ class _CalendarWidgetState extends State<CalendarWidget> {
   final DateTime _firstDay = DateTime(2000);
   final DateTime _lastDay = DateTime(2050);
   DateTime? _selectedDay;
+  final CalendarFormat _calendarFormat = CalendarFormat.month;
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
         TableCalendar(
+          headerStyle: const HeaderStyle(
+            formatButtonVisible: false,
+            titleCentered: true
+          ),
           focusedDay: _focusedDay,
           firstDay: _firstDay,
           lastDay: _lastDay,
@@ -31,6 +36,7 @@ class _CalendarWidgetState extends State<CalendarWidget> {
               _focusedDay = focusedDay;
             });
           },
+          calendarFormat: _calendarFormat,
         )
       ],
     );
