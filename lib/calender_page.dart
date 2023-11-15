@@ -13,19 +13,21 @@ class _CalendarPageState extends State<CalendarPage> {
   final CalendarFormat _calendarFormat = CalendarFormat.month;
   DateTime _focusedDay = DateTime.now();
   DateTime? _selectedDay;
+  // ignore: non_constant_identifier_names
+  String user_name = 'ユーザー名';
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false, // キーボードが出てきても画面が崩れないようにする
       appBar: AppBar(
-        title: const Text('Calendar'),
+        title: const Text('user name'),
         actions: [
           IconButton(
             onPressed: () async {
               try {
                 // ダイアログを出して入力する
-                final result = await showDialog<String>(
+                await showDialog<String>(
                   context: context,
                   builder: (context) {
                     final TextEditingController controller =
