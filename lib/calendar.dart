@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:table_calendar/table_calendar.dart';
 
-class CalenderWidget extends StatefulWidget {
-  const CalenderWidget({super.key});
+class CalendarWidget extends StatefulWidget {
+  const CalendarWidget({super.key});
 
   @override
-  State<CalenderWidget> createState() => _CalenderWidgetState();
+  State<CalendarWidget> createState() => _CalendarWidgetState();
 }
 
-class _CalenderWidgetState extends State<CalenderWidget> {
+class _CalendarWidgetState extends State<CalendarWidget> {
   final DateTime _focusedDay = DateTime.now();
   final DateTime _firstDay = DateTime(2000);
   final DateTime _lastDay = DateTime(2050);
