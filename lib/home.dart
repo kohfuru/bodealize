@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:bodealize/calender.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
   @override
   State<HomePage> createState() => _HomePageState();
-
 }
 
 class _HomePageState extends State<HomePage> {
@@ -22,6 +22,7 @@ class _HomePageState extends State<HomePage> {
           )
         ),
       ),
+      body: CalenderWidget(),
     );
   }
 }
