@@ -9,9 +9,10 @@ class CalendarWidget extends StatefulWidget {
 }
 
 class _CalendarWidgetState extends State<CalendarWidget> {
-  final DateTime _focusedDay = DateTime.now();
+  DateTime _focusedDay = DateTime.now();
   final DateTime _firstDay = DateTime(2000);
   final DateTime _lastDay = DateTime(2050);
+  DateTime? _selectedDay;
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +21,16 @@ class _CalendarWidgetState extends State<CalendarWidget> {
         TableCalendar(
           focusedDay: _focusedDay,
           firstDay: _firstDay,
-          lastDay: _lastDay
+          lastDay: _lastDay,
+          selectedDayPredicate: (day) {
+            return isSameDay(_selectedDay, day);
+          },
+          onDaySelected: (selectedDay, focusedDay) {
+            setState(() {
+              _selectedDay = selectedDay;
+              _focusedDay = focusedDay;
+            });
+          },
         )
       ],
     );
