@@ -1,3 +1,5 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:table_calendar/table_calendar.dart';
 
@@ -14,6 +16,8 @@ class _CalendarWidgetState extends State<CalendarWidget> {
   final DateTime _lastDay = DateTime(2050);
   DateTime? _selectedDay;
   final CalendarFormat _calendarFormat = CalendarFormat.month;
+
+  FirebaseFirestore db = FirebaseFirestore.instance;
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +41,8 @@ class _CalendarWidgetState extends State<CalendarWidget> {
             });
           },
           calendarFormat: _calendarFormat,
-        )
+        ),
+
       ],
     );
   }
