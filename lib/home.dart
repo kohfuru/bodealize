@@ -26,6 +26,12 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: AppBar(
         title: Text(user_name),
+        shape: const Border(
+          bottom: BorderSide(
+            color: Colors.blueGrey,
+            width: 1
+          )
+        ),
       ),
       body: SingleChildScrollView(
         child: Column(
