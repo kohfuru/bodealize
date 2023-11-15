@@ -1,8 +1,9 @@
 // import 'package:bodealize/footer.dart';
-import 'package:bodealize/home.dart';
+// import 'package:bodealize/home.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
+import 'package:bodealize/calender_page.dart';
 
 
 
@@ -26,7 +27,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.blueGrey),
         useMaterial3: true,
       ),
-      home: HomePage(title: 'bodealize'),
+      home: const CalendarPage(),
     );
   }
 }
