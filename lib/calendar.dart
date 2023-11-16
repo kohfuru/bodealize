@@ -52,9 +52,21 @@ class _CalendarWidgetState extends State<CalendarWidget> {
           margin: const EdgeInsets.all(30),
           alignment: Alignment.bottomRight,
           child: FloatingActionButton(
-            child: const Icon(Icons.add),
-            onPressed: () {},
-          ),
+            onPressed: () async {
+              showDialog(
+                context: context,
+                builder: (context) {
+                  return const AlertDialog(
+                    content: TextField(
+                      decoration: InputDecoration(
+                        hintText: 'メモを入力してください'
+                      ),
+                    ),
+                  );
+                }
+              );
+            },
+            child: const Icon(Icons.add),),
         )
       ],
     );
