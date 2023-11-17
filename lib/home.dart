@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:bodealize/calendar.dart';
+import 'package:bodealize/calendar_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -23,7 +23,7 @@ class _HomePageState extends State<HomePage> {
           )
         ),
       ),
-      body: const CalendarWidget(),
+      body: const CalendarPage(),
     );
   }
 }

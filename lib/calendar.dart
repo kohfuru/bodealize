@@ -21,99 +21,26 @@ class _CalendarWidgetState extends State<CalendarWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        Column(
-          children: [
-            TableCalendar(
-              headerStyle: const HeaderStyle(
-                formatButtonVisible: false,
-                titleCentered: true
-              ),
-              focusedDay: _focusedDay,
-              firstDay: _firstDay,
-              lastDay: _lastDay,
-              selectedDayPredicate: (day) {
-                return isSameDay(
-                    _selectedDay, day
-                );
-              },
-              onDaySelected: (selectedDay, focusedDay) {
-                setState(() {
-                  _selectedDay = selectedDay;
-                  _focusedDay = focusedDay;
-                });
-              },
-              calendarFormat: _calendarFormat,
-            ),
-          ],
-        ),
-        Container(
-          margin: const EdgeInsets.all(30),
-          alignment: Alignment.bottomRight,
-          child: FloatingActionButton(
-            onPressed: () async {
-              showModalBottomSheet(
-                context: context,
-                builder: (context) {
-                  return  Scaffold(
-                    appBar: AppBar(
-                      backgroundColor: Colors.blue.shade50,
-                      automaticallyImplyLeading: false,
-                      title: const Text('入力'),
-                      shape: const Border(
-                        bottom: BorderSide(
-                          color: Colors.blueGrey,
-                          width: 1
-                        )
-                      ),
-                      actions: [
-                        InkWell(
-                          child: IconButton(
-                            onPressed: () {
-                              Navigator.pop(context);
-                            },
-                            icon: const Icon(Icons.close)
-                          ),
-                        )
-                      ],
-                    ),
-                    body: Column(
-                      children: [
-                        const TextField(
-                          decoration: InputDecoration(
-                            hintText: 'メモを入力してください',
-                            contentPadding: EdgeInsets.all(10),
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.all(10),
-                          child: SizedBox(
-                            width: double.infinity,
-                            child: TextButton(
-                              onPressed: () {},
-                              style: ButtonStyle(
-                                backgroundColor: MaterialStateProperty.all(Colors.orange)
-                              ),
-                              child: const Text(
-                                '保存',
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 17
-                                ),
-                              ),
-                            ),
-                          ),
-                        )
-                      ],
-                    ),
-                  );
-                }
-              );
-            },
-            child: const Icon(Icons.add),),
-        )
-      ],
+    return TableCalendar(
+      headerStyle: const HeaderStyle(
+        formatButtonVisible: false,
+        titleCentered: true
+      ),
+      focusedDay: _focusedDay,
+      firstDay: _firstDay,
+      lastDay: _lastDay,
+      selectedDayPredicate: (day) {
+        return isSameDay(
+          _selectedDay, day
+        );
+      },
+      onDaySelected: (selectedDay, focusedDay) {
+        setState(() {
+          _selectedDay = selectedDay;
+          _focusedDay = focusedDay;
+        });
+      },
+      calendarFormat: _calendarFormat,
     );
   }
 }
