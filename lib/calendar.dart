@@ -87,7 +87,7 @@ class _CalendarWidgetState extends State<CalendarWidget> {
                           ),
                         ),
                         Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 10),
+                          padding: const EdgeInsets.all(10),
                           child: SizedBox(
                             width: double.infinity,
                             child: TextButton(
@@ -98,7 +98,8 @@ class _CalendarWidgetState extends State<CalendarWidget> {
                               child: const Text(
                                 '保存',
                                 style: TextStyle(
-                                  color: Colors.white
+                                  color: Colors.white,
+                                  fontSize: 17
                                 ),
                               ),
                             ),
