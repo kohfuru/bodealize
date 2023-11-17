@@ -78,6 +78,34 @@ class _CalendarWidgetState extends State<CalendarWidget> {
                         )
                       ],
                     ),
+                    body: Column(
+                      children: [
+                        const TextField(
+                          decoration: InputDecoration(
+                            hintText: 'メモを入力してください',
+                            contentPadding: EdgeInsets.all(10),
+                          ),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.symmetric(horizontal: 10),
+                          child: SizedBox(
+                            width: double.infinity,
+                            child: TextButton(
+                              onPressed: () {},
+                              style: ButtonStyle(
+                                backgroundColor: MaterialStateProperty.all(Colors.orange)
+                              ),
+                              child: const Text(
+                                '保存',
+                                style: TextStyle(
+                                  color: Colors.white
+                                ),
+                              ),
+                            ),
+                          ),
+                        )
+                      ],
+                    ),
                   );
                 }
               );
