@@ -14,6 +14,7 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       resizeToAvoidBottomInset: false, // キーボードが出てきても画面が崩れないようにする
       appBar: AppBar(
+        backgroundColor: Colors.blue.shade50,
         title: const Text('user name'),
         shape: const Border(
           bottom: BorderSide(
