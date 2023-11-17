@@ -10,19 +10,56 @@ class MemoTextField extends StatefulWidget {
 }
 
 class _MemoTextFieldState extends State<MemoTextField> {
+  final padding = const EdgeInsets.all(10);
+
+
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        const TextField(
-          decoration: InputDecoration(
-            hintText: 'メモを入力してください',
-            contentPadding: EdgeInsets.all(10),
+        Padding(
+          padding: padding,
+          child: TextField(
+            decoration: InputDecoration(
+              hintText: 'メニュー名',
+              contentPadding: padding,
+              focusedBorder: UnderlineInputBorder(
+                borderSide: BorderSide(
+                  color: Colors.blueGrey
+                )
+              )
+              //   クリアボタンを置く
+            ),
           ),
         ),
         Padding(
-          padding: const EdgeInsets.all(10),
+          padding: padding,
+          child: SizedBox(
+            width: double.infinity,
+            child: TextField(
+              controller: TextEditingController(
+                text: 'category',
+              ),
+              readOnly: true,
+              decoration: InputDecoration(
+                contentPadding: padding
+              ),
+            ),
+          ),
+        ),
+        Padding(
+          padding: padding,
+          child: TextField(
+            decoration: InputDecoration(
+              hintText: 'メモを入力',
+              contentPadding: padding,
+              //   クリアボタンを置く
+            ),
+          ),
+        ),
+        Padding(
+          padding: padding,
           child: SizedBox(
             width: double.infinity,
             child: TextButton(
