@@ -56,8 +56,28 @@ class _CalendarWidgetState extends State<CalendarWidget> {
               showModalBottomSheet(
                 context: context,
                 builder: (context) {
-                  return  Container(
-
+                  return  Scaffold(
+                    appBar: AppBar(
+                      backgroundColor: Colors.blue.shade50,
+                      automaticallyImplyLeading: false,
+                      title: const Text('入力'),
+                      shape: const Border(
+                        bottom: BorderSide(
+                          color: Colors.blueGrey,
+                          width: 1
+                        )
+                      ),
+                      actions: [
+                        InkWell(
+                          child: IconButton(
+                            onPressed: () {
+                              Navigator.pop(context);
+                            },
+                            icon: const Icon(Icons.close)
+                          ),
+                        )
+                      ],
+                    ),
                   );
                 }
               );
