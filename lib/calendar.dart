@@ -53,15 +53,11 @@ class _CalendarWidgetState extends State<CalendarWidget> {
           alignment: Alignment.bottomRight,
           child: FloatingActionButton(
             onPressed: () async {
-              showDialog(
+              showModalBottomSheet(
                 context: context,
                 builder: (context) {
-                  return const AlertDialog(
-                    content: TextField(
-                      decoration: InputDecoration(
-                        hintText: 'メモを入力してください'
-                      ),
-                    ),
+                  return  Container(
+
                   );
                 }
               );
