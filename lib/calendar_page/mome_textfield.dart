@@ -20,10 +20,10 @@ class _MemoTextFieldState extends State<MemoTextField> {
     );
   }
 
-  InputDecoration  customInputDecoration(hintText) {
+  InputDecoration  customInputDecoration(String hintText) {
     return InputDecoration(
       contentPadding: padding,
-      focusedBorder: customUnderlineInputBorder(),
+      border: InputBorder.none,
       hintText: hintText,
     );
   }
@@ -38,6 +38,7 @@ class _MemoTextFieldState extends State<MemoTextField> {
             decoration: customInputDecoration('メニュー名')
           ),
         ),
+        const Divider(color: Colors.grey),
         Padding(
           padding: padding,
           child: TextField(
@@ -48,12 +49,14 @@ class _MemoTextFieldState extends State<MemoTextField> {
             decoration: customInputDecoration('')
           ),
         ),
+        const Divider(color: Colors.grey),
         Padding(
           padding: padding,
           child: TextField(
             decoration: customInputDecoration('メモを入力')
           ),
         ),
+        const Divider(color: Colors.grey),
         Padding(
           padding: padding,
           child: SizedBox(
