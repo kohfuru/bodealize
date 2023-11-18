@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:bodealize/calendar_page/buttonbar.dart';
 
 class MemoTextField extends StatefulWidget {
   const MemoTextField({super.key});
@@ -25,7 +26,6 @@ class _MemoTextFieldState extends State<MemoTextField> {
       contentPadding: padding,
       border: InputBorder.none,
       hintText: hintText,
-
     );
   }
 
@@ -59,22 +59,7 @@ class _MemoTextFieldState extends State<MemoTextField> {
         const Divider(color: Colors.grey),
         Padding(
           padding: padding,
-          child: SizedBox(
-            width: double.infinity,
-            child: TextButton(
-              onPressed: () {},
-              style: ButtonStyle(
-                  backgroundColor: MaterialStateProperty.all(Colors.orange)
-              ),
-              child: const Text(
-                '保存',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 17
-                ),
-              ),
-            ),
-          ),
+          child: const ButtonWidget()
         )
       ],
     );
