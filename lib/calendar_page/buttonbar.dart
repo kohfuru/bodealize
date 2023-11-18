@@ -10,9 +10,11 @@ class ButtonWidget extends StatefulWidget {
 }
 
 class _ButtonWidgetState extends State<ButtonWidget> {
+
   ButtonStyle customButtonStyle() {
-    return ButtonStyle(
-        backgroundColor: MaterialStateProperty.all(Colors.orange)
+    return TextButton.styleFrom(
+      fixedSize: const Size(120, 60),
+      backgroundColor: Colors.orange
     );
   }
 
@@ -20,8 +22,8 @@ class _ButtonWidgetState extends State<ButtonWidget> {
     return Text(
       text,
       style: const TextStyle(
-          color: Colors.white,
-          fontSize: 20
+        color: Colors.white,
+        fontWeight: FontWeight.bold
       ),
     );
   }
@@ -39,9 +41,9 @@ class _ButtonWidgetState extends State<ButtonWidget> {
     return ButtonBar(
       alignment: MainAxisAlignment.spaceBetween,
       children: [
-        customTextButton((){}, 'text'),
-        customTextButton((){}, 'text'),
-        customTextButton((){}, 'text'),
+        customTextButton((){}, '保存'),
+        customTextButton((){}, '保存して追加'),
+        customTextButton((){}, '追加'),
       ],
     );
   }
