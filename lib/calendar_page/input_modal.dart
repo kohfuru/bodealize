@@ -44,7 +44,10 @@ class _InputModalState extends State<InputModal> {
                     )
                   ],
                 ),
-                body: const MemoTextField()
+                body: Container(
+                  padding: const EdgeInsets.only(top: 10, right: 10, left: 10),
+                  child: const MemoTextField()
+                )
               );
             }
           );

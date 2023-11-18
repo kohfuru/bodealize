@@ -10,7 +10,7 @@ class MemoTextField extends StatefulWidget {
 }
 
 class _MemoTextFieldState extends State<MemoTextField> {
-  final padding = const EdgeInsets.all(10);
+  final padding = const EdgeInsets.only(left: 10);
 
   UnderlineInputBorder customUnderlineInputBorder() {
     return const UnderlineInputBorder(
@@ -25,6 +25,16 @@ class _MemoTextFieldState extends State<MemoTextField> {
       contentPadding: padding,
       border: InputBorder.none,
       hintText: hintText,
+
+    );
+  }
+
+  TextField customTextField(String hintText) {
+    return TextField(
+      style: const TextStyle(
+        fontSize: 20
+      ),
+      decoration: customInputDecoration(hintText)
     );
   }
 
@@ -32,30 +42,20 @@ class _MemoTextFieldState extends State<MemoTextField> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Padding(
-          padding: padding,
-          child: TextField(
-            decoration: customInputDecoration('メニュー名')
+        customTextField('メニュー名'),
+        const Divider(color: Colors.grey),
+        TextField(
+          style: const TextStyle(
+            fontSize: 20
           ),
+          controller: TextEditingController(
+            text: 'category',
+          ),
+          readOnly: true,
+          decoration: customInputDecoration('')
         ),
         const Divider(color: Colors.grey),
-        Padding(
-          padding: padding,
-          child: TextField(
-            controller: TextEditingController(
-              text: 'category',
-            ),
-            readOnly: true,
-            decoration: customInputDecoration('')
-          ),
-        ),
-        const Divider(color: Colors.grey),
-        Padding(
-          padding: padding,
-          child: TextField(
-            decoration: customInputDecoration('メモを入力')
-          ),
-        ),
+        customTextField('メモを入力'),
         const Divider(color: Colors.grey),
         Padding(
           padding: padding,
