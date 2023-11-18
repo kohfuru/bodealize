@@ -12,11 +12,12 @@ class MemoTextField extends StatefulWidget {
 
 class _MemoTextFieldState extends State<MemoTextField> {
   final padding = const EdgeInsets.only(left: 3);
+  final _controller = TextEditingController();
 
   UnderlineInputBorder customUnderlineInputBorder() {
     return const UnderlineInputBorder(
         borderSide: BorderSide(
-            color: Colors.blueGrey
+          color: Colors.blueGrey
         )
     );
   }
@@ -26,16 +27,21 @@ class _MemoTextFieldState extends State<MemoTextField> {
       contentPadding: padding,
       border: InputBorder.none,
       hintText: hintText,
+      suffixIcon: IconButton(
+        onPressed: () => _controller.clear(),
+        icon: const Icon(Icons.clear),
+      )
     );
   }
 
   Expanded customTextField(String hintText) {
     return Expanded(
       child: TextField(
-          style: const TextStyle(
-              fontSize: 20
-          ),
-          decoration: customInputDecoration(hintText)
+        controller: _controller,
+        style: const TextStyle(
+            fontSize: 20
+        ),
+        decoration: customInputDecoration(hintText)
       )
     );
   }
