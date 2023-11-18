@@ -12,7 +12,21 @@ class MemoTextField extends StatefulWidget {
 class _MemoTextFieldState extends State<MemoTextField> {
   final padding = const EdgeInsets.all(10);
 
+  UnderlineInputBorder customUnderlineInputBorder() {
+    return const UnderlineInputBorder(
+        borderSide: BorderSide(
+            color: Colors.blueGrey
+        )
+    );
+  }
 
+  InputDecoration  customInputDecoration(hintText) {
+    return InputDecoration(
+      contentPadding: padding,
+      focusedBorder: customUnderlineInputBorder(),
+      hintText: hintText,
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -21,41 +35,23 @@ class _MemoTextFieldState extends State<MemoTextField> {
         Padding(
           padding: padding,
           child: TextField(
-            decoration: InputDecoration(
-              hintText: 'メニュー名',
-              contentPadding: padding,
-              focusedBorder: UnderlineInputBorder(
-                borderSide: BorderSide(
-                  color: Colors.blueGrey
-                )
-              )
-              //   クリアボタンを置く
-            ),
-          ),
-        ),
-        Padding(
-          padding: padding,
-          child: SizedBox(
-            width: double.infinity,
-            child: TextField(
-              controller: TextEditingController(
-                text: 'category',
-              ),
-              readOnly: true,
-              decoration: InputDecoration(
-                contentPadding: padding
-              ),
-            ),
+            decoration: customInputDecoration('メニュー名')
           ),
         ),
         Padding(
           padding: padding,
           child: TextField(
-            decoration: InputDecoration(
-              hintText: 'メモを入力',
-              contentPadding: padding,
-              //   クリアボタンを置く
+            controller: TextEditingController(
+              text: 'category',
             ),
+            readOnly: true,
+            decoration: customInputDecoration('')
+          ),
+        ),
+        Padding(
+          padding: padding,
+          child: TextField(
+            decoration: customInputDecoration('メモを入力')
           ),
         ),
         Padding(
