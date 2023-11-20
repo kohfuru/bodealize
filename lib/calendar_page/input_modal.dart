@@ -1,4 +1,4 @@
-import 'package:bodealize/calendar_page/mome_textfield.dart';
+import 'package:bodealize/calendar_page/modal_body.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -46,7 +46,7 @@ class _InputModalState extends State<InputModal> {
                 ),
                 body: Container(
                   padding: const EdgeInsets.only(top: 10, right: 10, left: 10),
-                  child: const MemoTextField()
+                  child: const ModalBody()
                 )
               );
             }
