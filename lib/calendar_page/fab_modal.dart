@@ -1,4 +1,4 @@
-import 'package:bodealize/calendar_page/modal_body.dart';
+import 'package:bodealize/modal/modal_body.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';

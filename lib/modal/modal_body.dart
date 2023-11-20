@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:bodealize/calendar_page/buttonbar.dart';
-import 'package:bodealize/calendar_page/category.dart';
-import 'package:bodealize/calendar_page/modal_textfield.dart';
-import 'package:bodealize/calendar_page/select_categoryfield.dart';
+import 'package:bodealize/modal/buttonbar.dart';
+import 'package:bodealize/category/category.dart';
+import 'package:bodealize/modal/modal_textfield.dart';
+import 'package:bodealize/modal/select_categoryfield.dart';
 
 
 class ModalBody extends StatefulWidget {

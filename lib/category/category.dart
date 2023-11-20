@@ -1,3 +1,4 @@
+import 'package:bodealize/category/category_body.dart';
 import 'package:flutter/material.dart';
 
 class CategoryPage extends StatefulWidget {
@@ -21,6 +22,7 @@ class _CategoryPageState extends State<CategoryPage> {
           )
         ),
       ),
+      body: CategoryBody(),
     );
   }
 }

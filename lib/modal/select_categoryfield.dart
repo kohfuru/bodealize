@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:bodealize/calendar_page/category.dart';
+import 'package:bodealize/category/category.dart';
 
 class SelectCategory extends StatefulWidget {
   const SelectCategory({super.key});

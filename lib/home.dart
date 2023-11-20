@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:bodealize/calendar_page.dart';
+import 'package:bodealize/calendar_page/calendar_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
