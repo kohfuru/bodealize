@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_core/firebase_core.dart';
 
 class CategoryPage extends StatefulWidget {
   const CategoryPage({super.key});
@@ -12,6 +10,17 @@ class CategoryPage extends StatefulWidget {
 class _CategoryPageState extends State<CategoryPage> {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.blue.shade50,
+        title: const Text('カテゴリーを選択'),
+        shape: const Border(
+          bottom: BorderSide(
+            color: Colors.blueGrey,
+            width: 1
+          )
+        ),
+      ),
+    );
   }
 }
