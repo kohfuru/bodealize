@@ -3,8 +3,12 @@ import 'package:flutter/material.dart';
 class ModalTextField extends StatefulWidget {
   final TextEditingController controller;
   final String hintText;
+  final VoidCallback? onPressed;
+  final IconData icon;
 
    const ModalTextField({
+     required this.onPressed,
+     required this.icon,
      required this.controller,
      required this.hintText,
      Key? key,
@@ -21,8 +25,11 @@ class _ModalTextFieldState extends State<ModalTextField> {
     return Row(
       children: [
         IconButton(
-          onPressed: () {},
-          icon: const Icon(Icons.list)
+          onPressed: widget.onPressed,
+          icon: Icon(
+            widget.icon,
+            color: Colors.black,
+          ),
         ),
         Expanded(
           child: TextField(
