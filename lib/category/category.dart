@@ -22,7 +22,7 @@ class _CategoryPageState extends State<CategoryPage> {
           )
         ),
       ),
-      body: CategoryBody(),
+      body: const CategoryBody(),
     );
   }
 }

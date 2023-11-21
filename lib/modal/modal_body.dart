@@ -30,7 +30,7 @@ class _ModalBodyState extends State<ModalBody> {
           hintText: 'メニュー名',
         ),
         const Divider(color: Colors.grey),
-        SelectCategory(),
+        const SelectCategory(),
         const Divider(color: Colors.grey),
         ModalTextField(
           controller: _memoController,
