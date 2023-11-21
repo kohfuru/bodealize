@@ -23,6 +23,36 @@ class _CategoryPageState extends State<CategoryPage> {
         ),
       ),
       body: const CategoryBody(),
+      bottomNavigationBar: Container(
+        height: 85,
+        decoration: BoxDecoration(
+          color: Colors.blue.shade50,
+          border: const Border(
+            top: BorderSide(
+              color: Colors.blueGrey,
+              width: 1
+            )
+          )
+        ),
+        child: TextButton(
+          onPressed: () {
+            
+          },
+          child: const Align(
+            alignment: Alignment.topRight,
+            child: Padding(
+              padding: EdgeInsets.all(8.0),
+              child: Text(
+                'カテゴリ追加',
+                style: TextStyle(
+                  color: Colors.orange,
+                  fontSize: 15
+                ),
+              ),
+            ),
+          )
+        )
+      ),
     );
   }
 }
