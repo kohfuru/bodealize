@@ -6,6 +6,8 @@ class ModalTextField extends StatefulWidget {
   final VoidCallback? onPressed;
   final IconData icon;
   final bool autofocus;
+  final double height;
+  final double padding;
 
    const ModalTextField({
      required this.onPressed,
@@ -13,8 +15,10 @@ class ModalTextField extends StatefulWidget {
      required this.controller,
      required this.hintText,
      required this.autofocus,
-     Key? key,
-   }) : super(key: key);
+     required this.height,
+     required this.padding,
+     super.key,
+   });
 
   @override
   State<ModalTextField> createState() => _ModalTextFieldState();
@@ -34,19 +38,27 @@ class _ModalTextFieldState extends State<ModalTextField> {
           ),
         ),
         Expanded(
-          child: TextField(
-            autofocus: widget.autofocus,
-            controller: widget.controller,
-            style: const TextStyle(
-              fontSize: 20
-            ),
-            decoration: InputDecoration(
-              border: InputBorder.none,
-              hintText: widget.hintText,
-              suffixIcon: IconButton(
-                onPressed: () => widget.controller.clear(),
-                icon: const Icon(Icons.clear),
-              )
+          child: SizedBox(
+            height: widget.height,
+            child: TextField(
+              maxLines: null,
+              autofocus: widget.autofocus,
+              controller: widget.controller,
+              style: const TextStyle(
+                // height: 10,
+                  fontSize: 20
+              ),
+              decoration: InputDecoration(
+                  border: InputBorder.none,
+                  hintText: widget.hintText,
+                  suffixIcon: Padding(
+                    padding: EdgeInsets.symmetric(vertical: widget.padding),
+                      child: IconButton(
+                        onPressed: () => widget.controller.clear(),
+                        icon: const Icon(Icons.clear),
+                      )
+                  )
+              ),
             ),
           )
         ),
