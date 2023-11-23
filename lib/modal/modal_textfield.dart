@@ -5,12 +5,14 @@ class ModalTextField extends StatefulWidget {
   final String hintText;
   final VoidCallback? onPressed;
   final IconData icon;
+  final bool autofocus;
 
    const ModalTextField({
      required this.onPressed,
      required this.icon,
      required this.controller,
      required this.hintText,
+     required this.autofocus,
      Key? key,
    }) : super(key: key);
 
@@ -33,6 +35,7 @@ class _ModalTextFieldState extends State<ModalTextField> {
         ),
         Expanded(
           child: TextField(
+            autofocus: widget.autofocus,
             controller: widget.controller,
             style: const TextStyle(
               fontSize: 20

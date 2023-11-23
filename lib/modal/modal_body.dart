@@ -37,6 +37,7 @@ class _ModalBodyState extends State<ModalBody> {
           icon: Icons.list,
           controller: _menuNameController,
           hintText: 'メニュー名',
+          autofocus: true,
         ),
         const Divider(color: Colors.grey),
         const SelectCategory(),
@@ -46,6 +47,7 @@ class _ModalBodyState extends State<ModalBody> {
           icon: Icons.menu_book,
           controller: _memoController,
           hintText: 'メモを入力',
+          autofocus: false,
         ),
         const Divider(color: Colors.grey),
         Padding(

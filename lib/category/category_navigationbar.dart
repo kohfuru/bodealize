@@ -11,6 +11,7 @@ class CategoryBottom extends StatefulWidget {
 
 class _CategoryBottomState extends State<CategoryBottom> {
   bool isPressed = false;
+  final bool autofocus = true;
   late TextEditingController _textController;
 
   @override
@@ -50,7 +51,10 @@ class _CategoryBottomState extends State<CategoryBottom> {
                         title: const Text('カテゴリを追加'),
                         content: Padding(
                           padding: const EdgeInsets.only(top: 20),
-                          child: CupertinoTextField(controller: _textController,),
+                          child: CupertinoTextField(
+                            controller: _textController,
+                            autofocus: autofocus,
+                          ),
                         ),
                         actions: [
                           CupertinoDialogAction(
