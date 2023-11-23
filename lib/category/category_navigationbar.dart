@@ -58,11 +58,11 @@ class _CategoryBottomState extends State<CategoryBottom> {
                         ),
                         actions: [
                           CupertinoDialogAction(
-                            child: Text('キャンセル'),
+                            child: const Text('キャンセル'),
                             onPressed: () => Navigator.pop(context),
                           ),
                           CupertinoDialogAction(
-                            child: Text('OK'),
+                            child: const Text('OK'),
                             onPressed: () => Navigator.pop(context),
                           ),
                         ],
