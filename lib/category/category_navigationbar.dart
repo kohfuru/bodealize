@@ -1,3 +1,4 @@
+import 'package:bodealize/category/dialog.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -11,14 +12,6 @@ class CategoryBottom extends StatefulWidget {
 
 class _CategoryBottomState extends State<CategoryBottom> {
   bool isPressed = false;
-  final bool autofocus = true;
-  late TextEditingController _textController;
-
-  @override
-  void initState() {
-    super.initState();
-    _textController = TextEditingController();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -47,26 +40,7 @@ class _CategoryBottomState extends State<CategoryBottom> {
                   showDialog(
                     context: context,
                     builder: (BuildContext context) {
-                      return CupertinoAlertDialog(
-                        title: const Text('カテゴリを追加'),
-                        content: Padding(
-                          padding: const EdgeInsets.only(top: 20),
-                          child: CupertinoTextField(
-                            controller: _textController,
-                            autofocus: autofocus,
-                          ),
-                        ),
-                        actions: [
-                          CupertinoDialogAction(
-                            child: const Text('キャンセル'),
-                            onPressed: () => Navigator.pop(context),
-                          ),
-                          CupertinoDialogAction(
-                            child: const Text('OK'),
-                            onPressed: () => Navigator.pop(context),
-                          ),
-                        ],
-                      );
+                      return CategoryInputDialog();
                     },
                   );
                 },
