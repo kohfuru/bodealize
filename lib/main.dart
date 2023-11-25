@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
 import 'package:bodealize/home.dart';
+import 'package:bodealize/login/login.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -15,8 +16,13 @@ Future<void> main() async {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
+  bool checkLogin() {
+    return false;
+  }
+
   @override
   Widget build(BuildContext context) {
+    bool isLogin = checkLogin();
     return  MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Bodealize',
@@ -24,7 +30,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.blueGrey),
         useMaterial3: true,
       ),
-      home: const HomePage(),
+      home: isLogin ? const HomePage() : const Login(),
     );
   }
 }
