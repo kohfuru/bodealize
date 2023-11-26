@@ -1,3 +1,4 @@
+import 'package:bodealize/component/clear_button.dart';
 import 'package:flutter/material.dart';
 
 class ModalTextField extends StatefulWidget {
@@ -53,10 +54,7 @@ class _ModalTextFieldState extends State<ModalTextField> {
                   hintText: widget.hintText,
                   suffixIcon: Padding(
                     padding: EdgeInsets.symmetric(vertical: widget.padding),
-                      child: IconButton(
-                        onPressed: () => widget.controller.clear(),
-                        icon: const Icon(Icons.clear),
-                      )
+                      child: ClearButton(controller: widget.controller,),
                   )
               ),
             ),
