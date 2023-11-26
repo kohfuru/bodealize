@@ -1,3 +1,4 @@
+import 'package:bodealize/component/appbar.dart';
 import 'package:bodealize/component/clear_button.dart';
 import 'package:flutter/material.dart';
 
@@ -40,15 +41,9 @@ class _LoginState extends State<Login> {
     }
 
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.blue.shade50,
-        title: const Text('ログイン画面'),
-        shape: const Border(
-          bottom: BorderSide(
-            color: Colors.blueGrey,
-            width: 1
-          )
-        ),
+      appBar: const AppBarWidget(
+        title: 'ログイン画面',
+        actions: [],
       ),
       body: Column(
         children: [

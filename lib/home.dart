@@ -1,3 +1,4 @@
+import 'package:bodealize/component/appbar.dart';
 import 'package:flutter/material.dart';
 import 'package:bodealize/calendar_page/calendar_page.dart';
 
@@ -11,19 +12,13 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       resizeToAvoidBottomInset: false, // キーボードが出てきても画面が崩れないようにする
-      appBar: AppBar(
-        backgroundColor: Colors.blue.shade50,
-        title: const Text('user name'),
-        shape: const Border(
-          bottom: BorderSide(
-            color: Colors.blueGrey,
-            width: 1
-          )
-        ),
+      appBar: AppBarWidget(
+        title: 'ユーザー名',
+        actions: [],
       ),
-      body: const CalendarPage(),
+      body: CalendarPage(),
     );
   }
 }

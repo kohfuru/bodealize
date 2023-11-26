@@ -1,3 +1,4 @@
+import 'package:bodealize/component/appbar.dart';
 import 'package:flutter/material.dart';
 import 'menu_list_body.dart';
 
@@ -11,16 +12,10 @@ class MenuList extends StatefulWidget {
 class _MenuListState extends State<MenuList> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.blue.shade50,
-        title: const Text('メニューリスト'),
-        shape: const Border(
-          bottom: BorderSide(
-            color: Colors.blueGrey,
-            width: 1
-          )
-        ),
+    return const Scaffold(
+      appBar: AppBarWidget(
+        title: 'メニューリスト',
+        actions: [],
       ),
       body: MenuListBody(),
     );
