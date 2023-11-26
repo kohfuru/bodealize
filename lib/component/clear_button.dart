@@ -13,10 +13,13 @@ class ClearButton extends StatefulWidget {
 }
 
 class _ClearButtonState extends State<ClearButton> {
+
   @override
   Widget build(BuildContext context) {
     return IconButton(
-      onPressed: () => widget.controller.clear(),
+      onPressed: () {
+        widget.controller.clear();
+      } ,
       icon: const Icon(Icons.clear),
     );
   }
