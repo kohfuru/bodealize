@@ -46,16 +46,15 @@ class _ModalTextFieldState extends State<ModalTextField> {
               autofocus: widget.autofocus,
               controller: widget.controller,
               style: const TextStyle(
-                // height: 10,
-                  fontSize: 20
+                fontSize: 20
               ),
               decoration: InputDecoration(
-                  border: InputBorder.none,
-                  hintText: widget.hintText,
-                  suffixIcon: Padding(
-                    padding: EdgeInsets.symmetric(vertical: widget.padding),
-                      child: ClearButton(controller: widget.controller,),
-                  )
+                border: InputBorder.none,
+                hintText: widget.hintText,
+                suffixIcon: Padding(
+                  padding: EdgeInsets.symmetric(vertical: widget.padding),
+                  child: ClearButton(controller: widget.controller),
+                )
               ),
             ),
           )
