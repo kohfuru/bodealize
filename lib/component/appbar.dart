@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 
 class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
   final String title;
+  final List<Widget> actions;
 
   const AppBarWidget({
     required this.title,
+    required this.actions,
     super.key,
   });
 
@@ -19,6 +21,7 @@ class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
           width: 1,
         ),
       ),
+      actions: actions,
     );
   }
 
