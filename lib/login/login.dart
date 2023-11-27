@@ -23,7 +23,7 @@ class _LoginState extends State<Login> {
     double textFieldWidth = screenWidth * 0.8;
     double textFieldHeight = screenHeight * 0.06;
 
-    Padding textField(double paddingTop, TextEditingController controller) {
+    Padding textField(double paddingTop, TextEditingController controller, hintText) {
       return Padding(
         padding: EdgeInsets.only(top: paddingTop),
         child: SizedBox(
@@ -33,7 +33,8 @@ class _LoginState extends State<Login> {
             controller: controller,
             decoration: InputDecoration(
               border: const OutlineInputBorder(),
-              suffixIcon: ClearButton(controller: controller)
+              suffixIcon: ClearButton(controller: controller),
+              hintText: hintText,
             ),
           ),
         ),
@@ -48,8 +49,8 @@ class _LoginState extends State<Login> {
       body: Center(
         child: Column(
           children: [
-            textField(100, _emailController),
-            textField(50, _passController),
+            textField(100, _emailController, 'メールアドレス'),
+            textField(50, _passController, 'パスワード'),
             Padding(
               padding: const EdgeInsets.only(top: 50),
               child: SizedBox(
