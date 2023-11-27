@@ -35,6 +35,7 @@ class _LoginState extends State<Login> {
               border: const OutlineInputBorder(),
               suffixIcon: ClearButton(controller: controller),
               hintText: hintText,
+              contentPadding: const EdgeInsets.only(top: 30, left: 10),
             ),
           ),
         ),
@@ -50,9 +51,9 @@ class _LoginState extends State<Login> {
         child: Column(
           children: [
             textField(100, _emailController, 'メールアドレス'),
-            textField(50, _passController, 'パスワード'),
+            textField(35, _passController, 'パスワード'),
             Padding(
-              padding: const EdgeInsets.only(top: 50),
+              padding: const EdgeInsets.only(top: 35),
               child: SizedBox(
                 width: screenWidth * 0.6,
                 height: textFieldHeight,
