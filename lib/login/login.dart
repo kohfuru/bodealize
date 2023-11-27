@@ -1,5 +1,6 @@
 import 'package:bodealize/component/appbar.dart';
 import 'package:bodealize/component/clear_button.dart';
+import 'package:bodealize/component/save_button.dart';
 import 'package:bodealize/login/signup.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -57,21 +58,11 @@ class _LoginState extends State<Login> {
               child: SizedBox(
                 width: screenWidth * 0.6,
                 height: textFieldHeight,
-                child: TextButton(
+                child: SaveButton(
                   onPressed: () {},
-                  style: TextButton.styleFrom(
-                    fixedSize: const Size(120, 60),
-                    backgroundColor: Colors.orange
-                  ),
-                  child: const Text(
-                    'ログイン',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 18
-                    )
-                  ),
-                ),
+                  text: 'ログイン',
+                  size: 18,
+                )
               ),
             ),
             Padding(
