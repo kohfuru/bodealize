@@ -1,4 +1,5 @@
 import 'package:bodealize/component/appbar.dart';
+import 'package:bodealize/login/body_com.dart';
 import 'package:flutter/material.dart';
 
 class SignUp extends StatefulWidget {
@@ -17,6 +18,12 @@ class _SignUpState extends State<SignUp> {
         title: '新規登録',
         actions: [],
       ),
+      body: Center(
+        child: LoginBody(
+          onPressed: null,
+          text: '新規登録'
+        ),
+      )
     );
   }
 }
