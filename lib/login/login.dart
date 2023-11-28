@@ -1,7 +1,6 @@
 import 'package:bodealize/component/appbar.dart';
-import 'package:bodealize/login/body_com.dart';
 import 'package:bodealize/login/login_textfield.dart';
-import 'package:bodealize/login/signup.dart';
+import 'package:bodealize/login/signup_ui.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
