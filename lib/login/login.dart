@@ -1,8 +1,11 @@
 import 'package:bodealize/component/appbar.dart';
 import 'package:bodealize/login/body_com.dart';
+import 'package:bodealize/login/login_textfield.dart';
 import 'package:bodealize/login/signup.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+
+import 'login_button.dart';
 
 class Login extends StatefulWidget {
   const Login({super.key});
@@ -12,6 +15,8 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
+  final _emailController = TextEditingController();
+  final _passController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -23,8 +28,19 @@ class _LoginState extends State<Login> {
       body: Center(
         child: Column(
           children: [
-            LoginBody(
-              onPressed: () {},
+            LoginTextField(
+              paddingTop: 100,
+              controller: _emailController,
+              hintText: 'メールアドレス'
+            ),
+            LoginTextField(
+                paddingTop: 35,
+                controller: _passController,
+                hintText: 'パスワード'
+            ),
+            const LoginButton(
+              paddingTop: 35,
+              onPressed: null,
               text: 'ログイン',
             ),
             Padding(
