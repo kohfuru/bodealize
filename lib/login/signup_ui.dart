@@ -4,7 +4,6 @@ import 'package:bodealize/home.dart';
 import 'package:bodealize/login/login_button.dart';
 import 'package:bodealize/login/login_textfield.dart';
 import 'package:flutter/material.dart';
-// import 'package:bodealize/auth/signup_auth.dart';
 
 class SignUp extends StatefulWidget {
   const SignUp({super.key});
@@ -80,7 +79,7 @@ class _SignUpState extends State<SignUp> {
                     signUpModel.userName = _userNameController.text;
 
                     // 新規登録を実行
-                    await signUpModel.signup();
+                    await signUpModel.signup(_selectedGender);
 
                     // 新規登録が成功したらホームページに移動
                     Navigator.of(context).pushReplacement(

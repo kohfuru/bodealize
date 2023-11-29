@@ -10,7 +10,7 @@ class SignUpModel extends ChangeNotifier {
   //FirebaseAuthのインスタンスを生成
   final FirebaseAuth auth = FirebaseAuth.instance;
 
-  Future signup() async {
+  Future signup(String? selectedGender) async {
     try {
       if (mail.isEmpty) {
         throw "メールアドレスを入力して下さい";
@@ -20,6 +20,9 @@ class SignUpModel extends ChangeNotifier {
       }
       if (userName.isEmpty) {
         throw "ユーザー名を入力して下さい";
+      }
+      if (selectedGender == null) {
+        throw "性別を選択して下さい";
       }
       //Fire Auth に新規登録ユーザーの情報を書き込む
       final UserCredential user = await auth.createUserWithEmailAndPassword(
@@ -36,6 +39,7 @@ class SignUpModel extends ChangeNotifier {
             "email": email,
             "password": password,
             "user_name": userName,
+            "gender": selectedGender,
             // "createAt": Timestamp.now(),
           });
       print('新規登録が成功しました');
