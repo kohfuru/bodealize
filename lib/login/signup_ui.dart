@@ -71,8 +71,13 @@ class _SignUpState extends State<SignUp> {
                 ),
                 LoginButton(
                   paddingTop: 35,
-                  onPressed: () async {// SignUpModelのインスタンスを生成
+                  onPressed: () async {
+                    // SignUpMo// delのインスタンスを生成
                     SignUpModel signUpModel = SignUpModel();
+
+                    signUpModel.mail = _emailController.text;
+                    signUpModel.password = _passController.text;
+                    signUpModel.userName = _userNameController.text;
 
                     // 新規登録を実行
                     await signUpModel.signup();
