@@ -40,6 +40,9 @@ dependencies:
   firebase_core: ^2.23.0
   firebase_auth: ^4.14.1
   firebase_ui_auth: ^1.10.0
+  firebase_ui_localizations: ^1.8.0
+  firebase_ui_oauth_google: ^1.2.14
+  firebase_ui_oauth: ^1.4.14
 
 dev_dependencies:
   flutter_test:
