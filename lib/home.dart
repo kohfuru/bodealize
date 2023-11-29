@@ -17,6 +17,7 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBarWidget(
         title: 'ユーザー名',
         actions: [],
+        backButton: false,
       ),
       body: CalendarPage(),
     );

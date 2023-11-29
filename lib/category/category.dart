@@ -18,6 +18,7 @@ class _CategoryPageState extends State<CategoryPage> {
       appBar: AppBarWidget(
         title: 'カテゴリーを選択',
         actions: [],
+        backButton: true,
       ),
       body: CategoryBody(),
       bottomNavigationBar: CategoryBottom(),

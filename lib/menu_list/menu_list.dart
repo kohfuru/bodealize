@@ -16,6 +16,7 @@ class _MenuListState extends State<MenuList> {
       appBar: AppBarWidget(
         title: 'メニューリスト',
         actions: [],
+        backButton: true,
       ),
       body: MenuListBody(),
     );

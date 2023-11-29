@@ -42,6 +42,7 @@ class _InputModalState extends State<InputModal> {
                           ),
                         )
                       ],
+                      backButton: true,
                     ),
                     body: SizedBox.expand(
                       child: Container(

@@ -23,6 +23,7 @@ class _LoginState extends State<Login> {
       appBar: const AppBarWidget(
         title: 'ログイン画面',
         actions: [],
+        backButton: true,
       ),
       body: Center(
         child: Column(
