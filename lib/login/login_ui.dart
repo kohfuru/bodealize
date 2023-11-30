@@ -4,6 +4,8 @@ import 'package:bodealize/login/signup_ui.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
+import '../auth/login_auth.dart';
+import '../home.dart';
 import 'login_button.dart';
 
 class Login extends StatefulWidget {
@@ -38,9 +40,19 @@ class _LoginState extends State<Login> {
                 controller: _passController,
                 hintText: 'パスワード'
             ),
-            const LoginButton(
+            LoginButton(
               paddingTop: 35,
-              onPressed: null,
+              onPressed: () async {
+                LoginAuth loginAuth = LoginAuth();
+
+                await loginAuth.login(_emailController.text, _passController.text);
+
+                Navigator.of(context).pushReplacement(
+                  MaterialPageRoute(
+                    builder: (context) => const HomePage(),
+                  ),
+                );
+              },
               text: 'ログイン',
             ),
             Padding(
