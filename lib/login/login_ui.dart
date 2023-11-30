@@ -18,6 +18,7 @@ class Login extends StatefulWidget {
 class _LoginState extends State<Login> {
   final _emailController = TextEditingController();
   final _passController = TextEditingController();
+  String _errorMessage = '';
 
   @override
   Widget build(BuildContext context) {
@@ -30,8 +31,23 @@ class _LoginState extends State<Login> {
       body: Center(
         child: Column(
           children: [
+            if (_errorMessage.isNotEmpty)
+              Padding(
+                padding: const EdgeInsets.all(50),
+                child: Text(
+                  _errorMessage,
+                  style: const TextStyle(
+                    color: Colors.red,
+                    fontSize: 20
+                  ),
+                ),
+              )
+            else
+              const SizedBox(
+                height: 129,
+              ),
             LoginTextField(
-              paddingTop: 100,
+              paddingTop: 0,
               controller: _emailController,
               hintText: 'メールアドレス'
             ),
@@ -43,15 +59,22 @@ class _LoginState extends State<Login> {
             LoginButton(
               paddingTop: 35,
               onPressed: () async {
-                LoginAuth loginAuth = LoginAuth();
+                try {
+                  LoginAuth loginAuth = LoginAuth();
 
-                await loginAuth.login(_emailController.text, _passController.text);
+                  await loginAuth.login(_emailController.text, _passController.text);
 
-                Navigator.of(context).pushReplacement(
-                  MaterialPageRoute(
-                    builder: (context) => const HomePage(),
-                  ),
-                );
+                  Navigator.of(context).pushReplacement(
+                    MaterialPageRoute(
+                      builder: (context) => const HomePage(),
+                    ),
+                  );
+                } catch(e) {
+                  setState(() {
+                    _errorMessage = 'ログインに失敗しました';
+                  });
+                }
+
               },
               text: 'ログイン',
             ),
