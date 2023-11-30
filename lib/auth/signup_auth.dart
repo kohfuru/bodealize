@@ -2,7 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
-class SignUpModel extends ChangeNotifier {
+class SignUpAuth extends ChangeNotifier {
   String mail = "";
   String password = "";
   String userName = "";

@@ -72,14 +72,14 @@ class _SignUpState extends State<SignUp> {
                   paddingTop: 35,
                   onPressed: () async {
                     // SignUpMo// delのインスタンスを生成
-                    SignUpModel signUpModel = SignUpModel();
+                    SignUpAuth signUpAuth = SignUpAuth();
 
-                    signUpModel.mail = _emailController.text;
-                    signUpModel.password = _passController.text;
-                    signUpModel.userName = _userNameController.text;
+                    signUpAuth.mail = _emailController.text;
+                    signUpAuth.password = _passController.text;
+                    signUpAuth.userName = _userNameController.text;
 
                     // 新規登録を実行
-                    await signUpModel.signup(_selectedGender);
+                    await signUpAuth.signup(_selectedGender);
 
                     // 新規登録が成功したらホームページに移動
                     Navigator.of(context).pushReplacement(
