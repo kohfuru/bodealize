@@ -1,23 +1,20 @@
 import 'package:firebase_auth/firebase_auth.dart';
 
 class LoginAuth {
-  final FirebaseAuth _auth = FirebaseAuth.instance;
-
-  Future<void> login(String email, String password) async {
+  Future<void> login(String emailAddress, String password) async {
     try {
-      if (email.isEmpty || password.isEmpty) {
-        throw "メールアドレスとパスワードを入力してください";
-      }
-
-      // ログイン処理
-      await _auth.signInWithEmailAndPassword(
-        email: email,
-        password: password,
+      await FirebaseAuth.instance.signInWithEmailAndPassword(
+        email: emailAddress,
+        password: password
       );
-      print('ログインが成功しました');
-    } catch (e) {
-      print('ログインエラー: $e');
-      throw e; // エラーを呼び出し元にも伝える
+    } on FirebaseAuthException catch (e) {
+      print('FirebaseAuthException: ${e.message}');
+      if (e.code == 'user-not-found') {
+        print('ユーザーが見つかりませんでした。');
+      } else if (e.code == 'wrong-password') {
+        print('パスワードが正しくありません');
+      }
+      rethrow;
     }
   }
 }
