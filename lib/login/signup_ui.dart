@@ -1,6 +1,5 @@
-import 'package:bodealize/auth/signup_auth.dart';
 import 'package:bodealize/component/appbar.dart';
-import 'package:bodealize/home.dart';
+import 'package:bodealize/login/hendle_signup.dart';
 import 'package:bodealize/login/login_button.dart';
 import 'package:bodealize/login/login_textfield.dart';
 import 'package:flutter/material.dart';
@@ -14,7 +13,7 @@ class SignUp extends StatefulWidget {
 
 class _SignUpState extends State<SignUp> {
   final _emailController = TextEditingController();
-  final _passController = TextEditingController();
+  final _passwordController = TextEditingController();
   final _userNameController = TextEditingController();
 
   String? _selectedGender;
@@ -22,77 +21,70 @@ class _SignUpState extends State<SignUp> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: const AppBarWidget(
-          title: '新規登録',
-          actions: [],
-          backButton: true,
-        ),
-        body: Center(
-            child: Column(
-              children: [
-                LoginTextField(
-                    paddingTop: 50,
-                    controller: _emailController,
-                    hintText: 'メールアドレス'
-                ),
-                LoginTextField(
-                    paddingTop: 35,
-                    controller: _passController,
-                    hintText: 'パスワード'
-                ),
-                LoginTextField(
-                    paddingTop: 35,
-                    controller: _userNameController,
-                    hintText: 'ユーザー名'
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 35),
-                  child: DropdownButton<String>(
-                    value: _selectedGender,
-                    onChanged: (String? newValue) {
-                      setState(() {
-                        _selectedGender = newValue;
-                      });
-                    },
-                    items: <String>['男性', '女性', 'その他']
-                        .map<DropdownMenuItem<String>>((String value) {
-                      return DropdownMenuItem<String>(
-                        value: value,
-                        child: Text(value),
-                      );
-                    }).toList(),
-                    hint: const Text('性別を選択してください'),
-                    underline: Container(  // 枠線
-                      height: 2,
-                      color: Colors.blue, // 枠線の色
-                    ),
+      appBar: const AppBarWidget(
+        title: '新規登録',
+        actions: [],
+        backButton: true,
+      ),
+      body: SingleChildScrollView(
+        child: Center(
+          child: Column(
+            children: [
+              LoginTextField(
+                  paddingTop: 100,
+                  controller: _emailController,
+                  hintText: 'メールアドレス'
+              ),
+              LoginTextField(
+                  paddingTop: 50,
+                  controller: _passwordController,
+                  hintText: 'パスワード'
+              ),
+              LoginTextField(
+                  paddingTop: 35,
+                  controller: _userNameController,
+                  hintText: 'ユーザー名'
+              ),
+              Padding(
+                padding: const EdgeInsets.only(top: 35),
+                child: DropdownButton<String>(
+                  value: _selectedGender,
+                  onChanged: (String? newValue) {
+                    setState(() {
+                      _selectedGender = newValue;
+                    });
+                  },
+                  items: <String>['男性', '女性', 'その他']
+                      .map<DropdownMenuItem<String>>((String value) {
+                    return DropdownMenuItem<String>(
+                      value: value,
+                      child: Text(value),
+                    );
+                  }).toList(),
+                  hint: const Text('性別を選択してください'),
+                  underline: Container(  // 枠線
+                    height: 2,
+                    color: Colors.blue, // 枠線の色
                   ),
                 ),
-                LoginButton(
-                  paddingTop: 35,
-                  onPressed: () async {
-                    // SignUpMo// delのインスタンスを生成
-                    SignUpAuth signUpAuth = SignUpAuth();
-
-                    signUpAuth.mail = _emailController.text;
-                    signUpAuth.password = _passController.text;
-                    signUpAuth.userName = _userNameController.text;
-
-                    // 新規登録を実行
-                    await signUpAuth.signup(_selectedGender);
-
-                    // 新規登録が成功したらホームページに移動
-                    Navigator.of(context).pushReplacement(
-                      MaterialPageRoute(
-                        builder: (context) => const HomePage(),
-                      ),
-                    );
-                  },
-                  text: '新規登録',
-                )
-              ],
-            )
+              ),
+              LoginButton(
+                paddingTop: 35,
+                onPressed: () async {
+                  await HandleSignup().handleSignup(
+                    _emailController.text,
+                    _passwordController.text,
+                    _userNameController.text,
+                    _selectedGender,
+                    context
+                  );
+                },
+                text: '新規登録',
+              )
+            ],
+          )
         )
+      )
     );
   }
 }
