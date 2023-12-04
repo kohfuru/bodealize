@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../component/save_button.dart';
+import 'save_button.dart';
 
 class LoginButton extends StatefulWidget {
   final double paddingTop;

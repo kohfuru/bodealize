@@ -1,4 +1,4 @@
-import 'package:bodealize/login/signup_ui.dart';
+import 'package:bodealize/signup/signup_ui.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 

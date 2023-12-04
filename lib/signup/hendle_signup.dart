@@ -1,4 +1,4 @@
-import 'package:bodealize/login/error_dialog.dart';
+import 'package:bodealize/component/error_dialog.dart';
 import 'package:bodealize/login/login_ui.dart';
 import 'package:flutter/material.dart';
 

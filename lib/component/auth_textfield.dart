@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../component/clear_button.dart';
+import 'clear_button.dart';
 
 class LoginTextField extends StatefulWidget {
   final double paddingTop;

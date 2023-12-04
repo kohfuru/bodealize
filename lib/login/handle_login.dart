@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../auth/login_auth.dart';
 import '../home.dart';
-import 'error_dialog.dart';
+import '../component/error_dialog.dart';
 
 class HandleLogin {
 

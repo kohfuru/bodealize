@@ -1,7 +1,7 @@
 import 'package:bodealize/component/appbar.dart';
-import 'package:bodealize/login/hendle_signup.dart';
-import 'package:bodealize/login/login_button.dart';
-import 'package:bodealize/login/login_textfield.dart';
+import 'package:bodealize/signup/hendle_signup.dart';
+import 'package:bodealize/component/auth_button.dart';
+import 'package:bodealize/component/auth_textfield.dart';
 import 'package:flutter/material.dart';
 
 class SignUp extends StatefulWidget {
