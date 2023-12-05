@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-void showErrorDialog(context, title, text, onPressed) {
+void showErrorDialog(context, String title, String text, VoidCallback? onPressed) {
   showDialog(
     context: context,
     barrierDismissible: true,
