@@ -6,8 +6,6 @@ import '../component/error_dialog.dart';
 
 class HandleLogin {
 
-  void onPressed(context) => Navigator.pop(context);
-
   Future handleLogin(String emailText, String passwordText, context) async {
     try {
       if (emailText.isEmpty || passwordText.isEmpty) {
@@ -15,7 +13,7 @@ class HandleLogin {
           context,
           '入力エラー',
           'メールアドレスとパスワードを入力してください',
-          onPressed
+          () => Navigator.pop(context)
         );
         return;
       }
@@ -31,7 +29,7 @@ class HandleLogin {
         context,
         'ログインに失敗しました',
         '正しい情報を入力してください',
-        onPressed
+        () => Navigator.pop(context)
       );
     }
   }
