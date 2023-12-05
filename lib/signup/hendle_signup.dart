@@ -14,6 +14,16 @@ class HandleSignup {
     context,
   ) async {
     try {
+      if (emailText.isEmpty || passwordText.isEmpty || userName.isEmpty || gender == null) {
+        showErrorDialog(
+          context,
+          '入力エラー',
+          '必要な情報を入力してください',
+          () => Navigator.pop(context)
+        );
+        return;
+      }
+
       SignUpAuth sinUpAuth = SignUpAuth();
       await sinUpAuth.signup(emailText, passwordText, userName, gender);
 
@@ -28,7 +38,7 @@ class HandleSignup {
         )
       );
     } catch(e) {
-      String errorMessage = '';
+      String errorMessage = '正しい情報を入力してください';
       if (e is FirebaseAuthException) {
         if (e.code == 'weak-password') {
           errorMessage = 'パスワードが弱すぎます';
