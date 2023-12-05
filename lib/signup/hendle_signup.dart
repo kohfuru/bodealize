@@ -1,5 +1,6 @@
 import 'package:bodealize/component/error_dialog.dart';
 import 'package:bodealize/login/login_ui.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 import '../auth/signup_auth.dart';
@@ -27,10 +28,20 @@ class HandleSignup {
         )
       );
     } catch(e) {
+      String errorMessage = '';
+      if (e is FirebaseAuthException) {
+        if (e.code == 'weak-password') {
+          errorMessage = 'パスワードが弱すぎます';
+          print('パスワードが弱すぎます');
+        } else if (e.code == 'email-already-in-use') {
+          errorMessage = 'すでにこのメールアドレスでアカウントが作成されています';
+          print('すでにこのメールアドレスでアカウントが作成されています');
+        }
+      }
       showErrorDialog(
         context,
         'アカウント作成に失敗しました',
-        '必要な情報を入力してください',
+        errorMessage,
         () => Navigator.pop(context)
       );
     }
