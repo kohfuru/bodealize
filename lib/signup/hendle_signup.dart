@@ -15,14 +15,24 @@ class HandleSignup {
     try {
       SignUpAuth sinUpAuth = SignUpAuth();
       await sinUpAuth.signup(emailText, passwordText, userName, gender);
-      showErrorDialog(context, 'アカウントを作成しました', 'ログイン画面にてログインしてください');
-      Navigator.of(context).pushReplacement(
-        MaterialPageRoute(
-          builder: (context) => const Login(),
-        ),
+
+      showErrorDialog(
+        context,
+        'アカウントを作成しました',
+        'ログイン画面にてログインしてください',
+        () => Navigator.of(context).pushReplacement(
+          MaterialPageRoute(
+            builder: (context) => const Login(),
+          ),
+        )
       );
     } catch(e) {
-      showErrorDialog(context, 'アカウント作成に失敗しました', '必要な情報を入力してください');
+      showErrorDialog(
+        context,
+        'アカウント作成に失敗しました',
+        '必要な情報を入力してください',
+        () => Navigator.pop(context)
+      );
     }
   }
 }

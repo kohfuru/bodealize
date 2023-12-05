@@ -6,10 +6,17 @@ import '../component/error_dialog.dart';
 
 class HandleLogin {
 
+  void onPressed(context) => Navigator.pop(context);
+
   Future handleLogin(String emailText, String passwordText, context) async {
     try {
       if (emailText.isEmpty || passwordText.isEmpty) {
-        showErrorDialog(context, '入力エラー', 'メールアドレスとパスワードを入力してください');
+        showErrorDialog(
+          context,
+          '入力エラー',
+          'メールアドレスとパスワードを入力してください',
+          onPressed
+        );
         return;
       }
       LoginAuth loginAuth = LoginAuth();
@@ -20,7 +27,12 @@ class HandleLogin {
         ),
       );
     } catch(e) {
-      showErrorDialog(context, 'ログインに失敗しました', '正しい情報を入力してください');
+      showErrorDialog(
+        context,
+        'ログインに失敗しました',
+        '正しい情報を入力してください',
+        onPressed
+      );
     }
   }
 }
