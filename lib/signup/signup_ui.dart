@@ -31,12 +31,12 @@ class _SignUpState extends State<SignUp> {
           child: Column(
             children: [
               LoginTextField(
-                  paddingTop: 100,
+                  paddingTop: 50,
                   controller: _emailController,
                   hintText: 'メールアドレス'
               ),
               LoginTextField(
-                  paddingTop: 50,
+                  paddingTop: 35,
                   controller: _passwordController,
                   hintText: 'パスワード(6文字以上)'
               ),
