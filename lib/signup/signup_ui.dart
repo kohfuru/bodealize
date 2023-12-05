@@ -38,7 +38,7 @@ class _SignUpState extends State<SignUp> {
               LoginTextField(
                   paddingTop: 50,
                   controller: _passwordController,
-                  hintText: 'パスワード'
+                  hintText: 'パスワード(6文字以上)'
               ),
               LoginTextField(
                   paddingTop: 35,
