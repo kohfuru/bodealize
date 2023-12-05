@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-// () => Navigator.pop(context)
 void showErrorDialog(context, title, text, onPressed) {
   showDialog(
     context: context,
