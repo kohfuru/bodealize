@@ -11,13 +11,14 @@ class SignUpAuth {
         email: emailAddress,
         password: password,
       );
+      
+      await credential.user!.updateDisplayName(userName);
 
       var uid = credential.user!.uid;
 
       final user = {
         "uid": uid,
         "emailAddress": emailAddress,
-        "password": password,
         "userName": userName,
         "gender": gender,
       };
