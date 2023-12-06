@@ -1,10 +1,9 @@
 import 'package:bodealize/component/appbar.dart';
+import 'package:bodealize/component/my_button.dart';
 import 'package:bodealize/login/handle_login.dart';
 import 'package:bodealize/component/auth_textfield.dart';
 import 'package:bodealize/login/to_signup.dart';
 import 'package:flutter/material.dart';
-
-import '../component/auth_button.dart';
 
 class Login extends StatefulWidget {
   const Login({super.key});
@@ -38,8 +37,7 @@ class _LoginState extends State<Login> {
                 controller: _passwordController,
                 hintText: 'パスワード'
             ),
-            LoginButton(
-              paddingTop: 35,
+            MyButton(
               onPressed: () async {
                 await HandleLogin().handleLogin(
                   _emailController.text,
@@ -48,6 +46,8 @@ class _LoginState extends State<Login> {
                 );
               },
               text: 'ログイン',
+              size: 18,
+              paddingTop: 35,
             ),
             const ToSignUp()
           ],
