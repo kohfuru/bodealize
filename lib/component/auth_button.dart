@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'save_button.dart';
+import 'my_button.dart';
 
 class LoginButton extends StatefulWidget {
   final double paddingTop;
@@ -24,7 +24,6 @@ class _LoginButtonState extends State<LoginButton> {
     double screenWidth = MediaQuery.of(context).size.width;
     double screenHeight = MediaQuery.of(context).size.height;
 
-    double textFieldWidth = screenWidth * 0.8;
     double textFieldHeight = screenHeight * 0.06;
 
     return Padding(
@@ -32,7 +31,7 @@ class _LoginButtonState extends State<LoginButton> {
       child: SizedBox(
           width: screenWidth * 0.6,
           height: textFieldHeight,
-          child: SaveButton(
+          child: MyButton(
             onPressed: widget.onPressed,
             text: widget.text,
             size: 18,

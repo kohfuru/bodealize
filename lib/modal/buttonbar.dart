@@ -1,4 +1,4 @@
-import 'package:bodealize/component/save_button.dart';
+import 'package:bodealize/component/my_button.dart';
 import 'package:flutter/material.dart';
 
 class ButtonWidget extends StatefulWidget {
@@ -15,19 +15,19 @@ class _ButtonWidgetState extends State<ButtonWidget> {
     return ButtonBar(
       alignment: MainAxisAlignment.spaceBetween,
       children: [
-        SaveButton(
+        MyButton(
           onPressed: () {},
-          text: '保存',
+          text: 'メニューリストに保存',
           size: 15,
         ),
-        SaveButton(
+        MyButton(
           onPressed: () {},
-          text: '保存',
+          text: 'メモに保存',
           size: 15,
         ),
-        SaveButton(
+        MyButton(
           onPressed: () {},
-          text: '保存',
+          text: 'メニューリストとメモに保存',
           size: 15,
         ),
       ],

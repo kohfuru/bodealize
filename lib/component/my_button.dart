@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-class SaveButton extends StatefulWidget {
+class MyButton extends StatefulWidget {
   final VoidCallback? onPressed;
   final String text;
   final double size;
 
-  const SaveButton({
+  const MyButton({
     required this.onPressed,
     required this.text,
     required this.size,
@@ -13,10 +13,10 @@ class SaveButton extends StatefulWidget {
   });
 
   @override
-  State<SaveButton> createState() => _SaveButtonState();
+  State<MyButton> createState() => _MyButtonState();
 }
 
-class _SaveButtonState extends State<SaveButton> {
+class _MyButtonState extends State<MyButton> {
   @override
   Widget build(BuildContext context) {
     return TextButton(
