@@ -1,4 +1,5 @@
 import 'package:bodealize/component/appbar.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:bodealize/calendar_page/calendar_page.dart';
 
@@ -10,16 +11,33 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  String userName = '';
+
+  @override
+  void initState() {
+    super.initState();
+    _lodeUserName();
+  }
+
+  Future _lodeUserName() async {
+    User? user = FirebaseAuth.instance.currentUser;
+    if (user != null && user.displayName != null) {
+      setState(() {
+        userName = user.displayName!;
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
       resizeToAvoidBottomInset: false, // キーボードが出てきても画面が崩れないようにする
       appBar: AppBarWidget(
-        title: 'ユーザー名',
-        actions: [],
+        title: userName,
+        actions: const [],
         backButton: false,
       ),
-      body: CalendarPage(),
+      body: const CalendarPage(),
     );
   }
 }
