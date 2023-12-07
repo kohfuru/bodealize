@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -10,7 +11,7 @@ class CategoryInputDialog extends StatefulWidget {
 
 class _CategoryInputDialogState extends State<CategoryInputDialog> {
   late TextEditingController _textController;
-  final bool autofocus = true;
+  List<String> categories = [];
 
   @override
   void initState() {
@@ -26,7 +27,7 @@ class _CategoryInputDialogState extends State<CategoryInputDialog> {
         padding: const EdgeInsets.only(top: 20),
         child: CupertinoTextField(
           controller: _textController,
-          autofocus: autofocus,
+          autofocus: true,
         ),
       ),
       actions: [
@@ -36,8 +37,17 @@ class _CategoryInputDialogState extends State<CategoryInputDialog> {
         ),
         CupertinoDialogAction(
           child: const Text('OK'),
-          onPressed: () {
-
+          onPressed: () async {
+            String category = _textController.text.trim();
+            if (category.isNotEmpty) {
+              var db = FirebaseFirestore.instance;
+              await db.collection('categories').add({
+                'name': category
+              });
+              Navigator.pop(context);
+            } else {
+              return;
+            }
           },
         ),
       ],
