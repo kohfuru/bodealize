@@ -1,4 +1,4 @@
-import 'package:bodealize/category/dialog.dart';
+import 'package:bodealize/category/category_dialog.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
