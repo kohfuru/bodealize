@@ -11,28 +11,42 @@ class SelectCategory extends StatefulWidget {
 class _SelectCategoryState extends State<SelectCategory> {
   @override
   Widget build(BuildContext context) {
-    return TextField(
-      style: const TextStyle(
-          fontSize: 20
-      ),
-      controller: TextEditingController(
-        text: 'category',
-      ),
-      readOnly: true,
-      decoration: InputDecoration(
-          // contentPadding: padding,
-        border: InputBorder.none,
-        suffixIcon: IconButton(
-          onPressed: () {
-            Navigator.of(context).push(
-              MaterialPageRoute(
-                builder: (context) => const CategoryPage(),
+    double screenWidth = MediaQuery.of(context).size.width;
+
+    return SizedBox(
+      height: 50,
+      child: InkWell(
+        onTap: () {
+          Navigator.of(context).push(
+            MaterialPageRoute(
+              builder: (context) => const CategoryPage(),
+            ),
+          );
+        },
+        highlightColor: Colors.white,
+        splashColor: Colors.transparent,
+        child: Row(
+          children: [
+            Icon(
+              Icons.category,
+              color: Colors.black,
+            ),
+            Padding(padding: EdgeInsets.only(left: 12)),
+            Text(
+              'category',
+              style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 20
               ),
-            );
-          },
-          icon: const Icon(Icons.arrow_forward_ios),
-        )
-      )
+            ),
+            const Spacer(),
+            Icon(
+              Icons.arrow_forward_ios,
+              color: Colors.grey.shade600,
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
