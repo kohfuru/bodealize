@@ -1,6 +1,7 @@
-import 'package:bodealize/category/category_body.dart';
+import 'package:bodealize/category/category_service.dart';
 import 'package:bodealize/category/category_navigationbar.dart';
 import 'package:bodealize/component/appbar.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 class CategoryPage extends StatefulWidget {
@@ -11,16 +12,39 @@ class CategoryPage extends StatefulWidget {
 }
 
 class _CategoryPageState extends State<CategoryPage> {
+  final Stream<QuerySnapshot> _categoriesStream =
+    FirebaseFirestore.instance.collection('categories').snapshots();
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      appBar: AppBarWidget(
+    return Scaffold(
+      appBar: const AppBarWidget(
         title: 'カテゴリーを選択',
         actions: [],
         backButton: true,
       ),
-      body: CategoryBody(),
+      body: StreamBuilder<QuerySnapshot>(
+        stream: _categoriesStream,
+        builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
+          if (snapshot.hasError) {
+            return const Text('問題が発生しました');
+          }
+
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return const Text('Loading..');
+          }
+
+          return ListView(
+            children: snapshot.data!.docs.map((DocumentSnapshot document) {
+              Map<String, dynamic> data = document.data()! as Map<String, dynamic>;
+              return ListTile(
+                title: Text(data['name']),
+              );
+            })
+            .toList(),
+          );
+        },
+      ),
       bottomNavigationBar: CategoryBottom(),
     );
   }
