@@ -1,4 +1,3 @@
-import 'package:bodealize/category/category_service.dart';
 import 'package:bodealize/category/category_navigationbar.dart';
 import 'package:bodealize/component/appbar.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -12,8 +11,9 @@ class CategoryPage extends StatefulWidget {
 }
 
 class _CategoryPageState extends State<CategoryPage> {
-  final Stream<QuerySnapshot> _categoriesStream =
-    FirebaseFirestore.instance.collection('categories').snapshots();
+  final FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
+  late final CollectionReference _collectionReference = firebaseFirestore.collection('categories');
+  late final Stream<QuerySnapshot> _categoriesStream = _collectionReference.snapshots();
 
   @override
   Widget build(BuildContext context) {
@@ -37,15 +37,29 @@ class _CategoryPageState extends State<CategoryPage> {
           return ListView(
             children: snapshot.data!.docs.map((DocumentSnapshot document) {
               Map<String, dynamic> data = document.data()! as Map<String, dynamic>;
-              return ListTile(
-                title: Text(data['name']),
+              return Column(
+                children: [
+                  ListTile(
+                    title: Text(
+                      data['name'],
+                      style: const TextStyle(
+                        fontSize: 20,
+                      ),
+                    ),
+                    // leading: ,
+                  ),
+                  const Divider(
+                    color: Colors.grey,
+                    height: 1,
+                    thickness: 2,
+                  )
+                ],
               );
-            })
-            .toList(),
+            }).toList(),
           );
         },
       ),
-      bottomNavigationBar: CategoryBottom(),
+      bottomNavigationBar: const CategoryBottom(),
     );
   }
 }
