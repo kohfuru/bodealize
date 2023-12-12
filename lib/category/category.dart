@@ -19,7 +19,7 @@ class _CategoryPageState extends State<CategoryPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: const AppBarWidget(
-        title: 'カテゴリーを選択',
+        title: 'カテゴリを選択',
         actions: [],
         backButton: true,
       ),
@@ -40,13 +40,17 @@ class _CategoryPageState extends State<CategoryPage> {
               return Column(
                 children: [
                   ListTile(
+                    leading: Icon(
+                      Icons.lens,
+                      color: Color(data['color']),
+                      size: 30,
+                    ),
                     title: Text(
                       data['name'],
                       style: const TextStyle(
                         fontSize: 20,
                       ),
                     ),
-                    // leading: ,
                   ),
                   const Divider(
                     color: Colors.grey,

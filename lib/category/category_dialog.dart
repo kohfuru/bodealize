@@ -1,6 +1,5 @@
 import 'package:bodealize/component/clear_button.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 
@@ -13,7 +12,7 @@ class CategoryInputDialog extends StatefulWidget {
 
 class _CategoryInputDialogState extends State<CategoryInputDialog> {
   late TextEditingController _textController;
-  Color pickerColor = Color(0xff443a49);
+  Color pickerColor = const Color(0xff443a49);
   List<String> categories = [];
 
   @override
@@ -26,6 +25,10 @@ class _CategoryInputDialogState extends State<CategoryInputDialog> {
     setState(() {
       pickerColor = color;
     });
+  }
+
+  int colorToInt(Color color) {
+    return color.value;
   }
 
   @override
@@ -45,12 +48,11 @@ class _CategoryInputDialogState extends State<CategoryInputDialog> {
                 ),
               ),
               BlockPicker(
-                  pickerColor: pickerColor,
-                  onColorChanged: onColorChanged,
-                ),
+                pickerColor: pickerColor,
+                onColorChanged: onColorChanged,
+              ),
             ],
           ),
-
       ),
       actions: [
         Row(
@@ -67,7 +69,8 @@ class _CategoryInputDialogState extends State<CategoryInputDialog> {
                 if (category.isNotEmpty) {
                   var db = FirebaseFirestore.instance;
                   await db.collection('categories').add({
-                    'name': category
+                    'name': category,
+                    'color': colorToInt(pickerColor),
                   });
                   Navigator.pop(context);
                 } else {
