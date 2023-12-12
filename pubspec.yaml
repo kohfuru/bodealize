@@ -43,6 +43,7 @@ dependencies:
   firebase_ui_localizations: ^1.8.0
   firebase_ui_oauth_google: ^1.2.14
   firebase_ui_oauth: ^1.4.14
+  flutter_colorpicker: ^1.0.3
 
 dev_dependencies:
   flutter_test:
