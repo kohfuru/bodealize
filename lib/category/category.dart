@@ -45,14 +45,19 @@ class _CategoryPageState extends State<CategoryPage> {
                       color: Color(data['color']),
                       size: 30,
                     ),
-                    title: Text(
-                      data['name'],
-                      style: const TextStyle(
-                        fontSize: 20,
+                    title: InkWell(
+                      onTap: () => print('tap'),
+                      highlightColor: Colors.white,
+                      splashColor: Colors.transparent,
+                      child: Text(
+                        data['name'],
+                        style: const TextStyle(
+                          fontSize: 20,
+                        ),
                       ),
                     ),
                     trailing: IconButton(
-                      icon: Icon(Icons.clear),
+                      icon: const Icon(Icons.clear),
                       onPressed: () async {
                         var db = FirebaseFirestore.instance;
                         await db.collection('categories').doc(document.id).delete();
