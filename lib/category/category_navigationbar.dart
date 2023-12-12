@@ -40,7 +40,7 @@ class _CategoryBottomState extends State<CategoryBottom> {
                   showDialog(
                     context: context,
                     builder: (BuildContext context) {
-                      return CategoryInputDialog();
+                      return const CategoryInputDialog();
                     },
                   );
                 },
