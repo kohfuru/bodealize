@@ -51,6 +51,13 @@ class _CategoryPageState extends State<CategoryPage> {
                         fontSize: 20,
                       ),
                     ),
+                    trailing: IconButton(
+                      icon: Icon(Icons.clear),
+                      onPressed: () async {
+                        var db = FirebaseFirestore.instance;
+                        await db.collection('categories').doc(document.id).delete();
+                      },
+                    ),
                   ),
                   const Divider(
                     color: Colors.grey,
