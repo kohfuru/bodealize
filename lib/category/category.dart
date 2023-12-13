@@ -1,7 +1,10 @@
 import 'package:bodealize/category/category_navigationbar.dart';
 import 'package:bodealize/component/appbar.dart';
+import 'package:bodealize/modal/select_categoryfield.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+
+import '../modal/modal_body.dart';
 
 class CategoryPage extends StatefulWidget {
   const CategoryPage({super.key});
@@ -46,7 +49,10 @@ class _CategoryPageState extends State<CategoryPage> {
                       size: 30,
                     ),
                     title: InkWell(
-                      onTap: () => print('tap'),
+                      onTap: () {
+                        _collectionReference.doc(document.id).update({'selected': !data['selected']});
+                        Navigator.of(context).pop();
+                      },
                       highlightColor: Colors.white,
                       splashColor: Colors.transparent,
                       child: Text(
