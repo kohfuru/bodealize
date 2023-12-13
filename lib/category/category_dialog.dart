@@ -71,6 +71,7 @@ class _CategoryInputDialogState extends State<CategoryInputDialog> {
                   await db.collection('categories').add({
                     'name': category,
                     'color': colorToInt(pickerColor),
+                    'selected': false
                   });
                   Navigator.pop(context);
                 } else {
