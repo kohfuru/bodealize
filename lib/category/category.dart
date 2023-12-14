@@ -50,7 +50,12 @@ class _CategoryPageState extends State<CategoryPage> {
                     ),
                     title: InkWell(
                       onTap: () {
-                        _collectionReference.doc(document.id).update({'selected': !data['selected']});
+                        for (var others in snapshot.data!.docs) {
+                          if (others.id != document.id ) {
+                            _collectionReference.doc(others.id).update({'selected': false});
+                          }
+                        }
+                        _collectionReference.doc(document.id).update({'selected': true});
                         Navigator.of(context).pop();
                       },
                       highlightColor: Colors.white,
