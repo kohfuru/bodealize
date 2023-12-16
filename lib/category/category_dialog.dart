@@ -1,3 +1,4 @@
+import 'package:bodealize/auth/read_uid.dart';
 import 'package:bodealize/component/clear_button.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -68,8 +69,7 @@ class _CategoryInputDialogState extends State<CategoryInputDialog> {
               onPressed: () async {
                 String category = _textController.text.trim();
                 if (category.isNotEmpty) {
-                  FirebaseAuth auth = FirebaseAuth.instance;
-                  String uid = auth.currentUser!.uid;
+                  String uid = await readUid();
                   FirebaseFirestore db = FirebaseFirestore.instance;
                   DocumentReference userDoc = db.collection('users').doc(uid);
                   await userDoc.collection('categories').add({
