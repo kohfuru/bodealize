@@ -1,5 +1,6 @@
 import 'package:bodealize/component/clear_button.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 
@@ -67,8 +68,11 @@ class _CategoryInputDialogState extends State<CategoryInputDialog> {
               onPressed: () async {
                 String category = _textController.text.trim();
                 if (category.isNotEmpty) {
-                  var db = FirebaseFirestore.instance;
-                  await db.collection('categories').add({
+                  FirebaseAuth auth = FirebaseAuth.instance;
+                  String uid = auth.currentUser!.uid;
+                  FirebaseFirestore db = FirebaseFirestore.instance;
+                  DocumentReference userDoc = db.collection('users').doc(uid);
+                  await userDoc.collection('categories').add({
                     'name': category,
                     'color': colorToInt(pickerColor),
                     'selected': false
