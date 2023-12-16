@@ -1,7 +1,9 @@
+import 'package:bodealize/modal/categoryfield_content.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:bodealize/category/category.dart';
 
 class SelectCategory extends StatefulWidget {
+
   const SelectCategory({super.key});
 
   @override
@@ -9,44 +11,32 @@ class SelectCategory extends StatefulWidget {
 }
 
 class _SelectCategoryState extends State<SelectCategory> {
+
   @override
   Widget build(BuildContext context) {
-    double screenWidth = MediaQuery.of(context).size.width;
+    final FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
+    late final CollectionReference collectionReference = firebaseFirestore.collection('categories');
+    late final myStream = collectionReference.where('selected', isEqualTo: true).snapshots();
 
-    return SizedBox(
-      height: 50,
-      child: InkWell(
-        onTap: () {
-          Navigator.of(context).push(
-            MaterialPageRoute(
-              builder: (context) => const CategoryPage(),
-            ),
+    return StreamBuilder(
+      stream: myStream,
+      builder: (context, snapshot) {
+        final List<Map<String, dynamic>> filteredDocs = snapshot.data!.docs.where(
+                (doc) => doc['selected'] == true).map((doc) => doc.data() as Map<String, dynamic>).toList();
+
+        if (filteredDocs.isNotEmpty) {
+          final firstDocs = filteredDocs[0];
+          return CategoryFieldContent(
+            categoryColor: firstDocs['color'],
+            categoryName: firstDocs['name'],
           );
-        },
-        highlightColor: Colors.white,
-        splashColor: Colors.transparent,
-        child: Row(
-          children: [
-            Icon(
-              Icons.category,
-              color: Colors.black,
-            ),
-            Padding(padding: EdgeInsets.only(left: 12)),
-            Text(
-              'category',
-              style: TextStyle(
-                  color: Colors.black,
-                  fontSize: 20
-              ),
-            ),
-            const Spacer(),
-            Icon(
-              Icons.arrow_forward_ios,
-              color: Colors.grey.shade600,
-            ),
-          ],
-        ),
-      ),
+        } else {
+          return const CategoryFieldContent(
+            categoryColor: 0xFF000000,
+            categoryName: 'カテゴリーを入力してください',
+          );
+        }
+      }
     );
   }
 }

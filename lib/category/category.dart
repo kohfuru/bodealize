@@ -1,10 +1,7 @@
 import 'package:bodealize/category/category_navigationbar.dart';
 import 'package:bodealize/component/appbar.dart';
-import 'package:bodealize/modal/select_categoryfield.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-
-import '../modal/modal_body.dart';
 
 class CategoryPage extends StatefulWidget {
   const CategoryPage({super.key});
@@ -16,7 +13,6 @@ class CategoryPage extends StatefulWidget {
 class _CategoryPageState extends State<CategoryPage> {
   final FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
   late final CollectionReference _collectionReference = firebaseFirestore.collection('categories');
-  late final Stream<QuerySnapshot> _categoriesStream = _collectionReference.snapshots();
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +23,7 @@ class _CategoryPageState extends State<CategoryPage> {
         backButton: true,
       ),
       body: StreamBuilder<QuerySnapshot>(
-        stream: _categoriesStream,
+        stream: _collectionReference.snapshots(),
         builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
           if (snapshot.hasError) {
             return const Text('問題が発生しました');
