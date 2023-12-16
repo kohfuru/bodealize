@@ -1,8 +1,7 @@
 import 'package:bodealize/menu_list/menu_list.dart';
 import 'package:flutter/material.dart';
-import 'package:bodealize/category/category.dart';
 import 'package:bodealize/modal/modal_textfield.dart';
-import 'package:bodealize/modal/select_categoryfield.dart';
+import 'package:bodealize/modal/modal_categoryfield.dart';
 
 import '../component/my_button.dart';
 
