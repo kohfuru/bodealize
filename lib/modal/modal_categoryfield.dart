@@ -15,13 +15,15 @@ class _ModalCategoryFieldState extends State<ModalCategoryField> {
   @override
   Widget build(BuildContext context) {
     FirestoreReference firestoreReference = FirestoreReference();
-    late final myStream = firestoreReference.categories.where('selected', isEqualTo: true).snapshots();
 
     return StreamBuilder(
-      stream: myStream,
+      stream: firestoreReference.snapshotTrueSelected,
       builder: (context, snapshot) {
-        final List<Map<String, dynamic>> filteredDocs = snapshot.data!.docs.where(
-                (doc) => doc['selected'] == true).map((doc) => doc.data() as Map<String, dynamic>).toList();
+        final List<Map<String, dynamic>> filteredDocs = snapshot.data!
+            .docs
+            .where((doc) => doc['selected'] == true)
+            .map((doc) => doc.data() as Map<String, dynamic>)
+            .toList();
 
         if (filteredDocs.isNotEmpty) {
           final firstDocs = filteredDocs[0];

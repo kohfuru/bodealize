@@ -9,4 +9,6 @@ class FirestoreReference {
   String get uid => auth.currentUser!.uid;
   DocumentReference get userDoc => users.doc(uid);
   CollectionReference get categories => userDoc.collection('categories');
+  Query get trueSelected => categories.where('selected', isEqualTo: true);
+  Stream<QuerySnapshot<Object?>> get snapshotTrueSelected =>  trueSelected.snapshots();
 }
