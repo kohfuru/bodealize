@@ -16,6 +16,7 @@ class _CategoryInputDialogState extends State<CategoryInputDialog> {
   late TextEditingController _textController;
   Color pickerColor = const Color(0xff443a49);
   List<String> categories = [];
+  FirestoreReference firestoreReference = FirestoreReference();
 
   @override
   void initState() {
@@ -69,10 +70,7 @@ class _CategoryInputDialogState extends State<CategoryInputDialog> {
               onPressed: () async {
                 String category = _textController.text.trim();
                 if (category.isNotEmpty) {
-                  String uid = await readUid();
-                  FirebaseFirestore db = FirebaseFirestore.instance;
-                  DocumentReference userDoc = db.collection('users').doc(uid);
-                  await userDoc.collection('categories').add({
+                  await firestoreReference.categories.add({
                     'name': category,
                     'color': colorToInt(pickerColor),
                     'selected': false
