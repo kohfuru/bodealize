@@ -1,4 +1,4 @@
-import 'package:bodealize/auth/read_uid.dart';
+import 'package:bodealize/firestore_reference.dart';
 import 'package:bodealize/category/category_navigationbar.dart';
 import 'package:bodealize/component/appbar.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';

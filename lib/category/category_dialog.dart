@@ -1,4 +1,4 @@
-import 'package:bodealize/auth/read_uid.dart';
+import 'package:bodealize/firestore_reference.dart';
 import 'package:bodealize/component/clear_button.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
