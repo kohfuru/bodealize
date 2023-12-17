@@ -1,4 +1,6 @@
+import 'package:bodealize/firestore_reference.dart';
 import 'package:bodealize/menu_list/menu_list.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:bodealize/modal/modal_textfield.dart';
 import 'package:bodealize/modal/modal_categoryfield.dart';
@@ -15,8 +17,9 @@ class ModalBody extends StatefulWidget {
 class _ModalBodyState extends State<ModalBody> {
   final _menuNameController = TextEditingController();
   final _memoController = TextEditingController();
-
+  @override
   late BuildContext context;
+  FirestoreReference firestoreReference = FirestoreReference();
 
   @override
   Widget build(BuildContext context) {
@@ -41,7 +44,7 @@ class _ModalBodyState extends State<ModalBody> {
                 padding: 0,
               ),
               const Divider(color: Colors.grey),
-              ModalCategoryField(),
+              const ModalCategoryField(),
               const Divider(color: Colors.grey),
               ModalTextField(
                 onPressed: null,
@@ -54,7 +57,15 @@ class _ModalBodyState extends State<ModalBody> {
               ),
               const Divider(color: Colors.grey),
               MyButton(
-                onPressed: () {},
+                onPressed: () async {
+                  QuerySnapshot snapshot = await firestoreReference.trueSelected.get();
+                  CollectionReference menus = snapshot.docs.first.reference.collection('menus');
+
+                  await menus.add({
+                    'menuName': _menuNameController.text,
+                    'menuMemo': _memoController.text
+                  });
+                },
                 text: '保存',
                 size: 15,
                 paddingTop: 20,
