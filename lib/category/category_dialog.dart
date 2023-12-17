@@ -1,7 +1,5 @@
 import 'package:bodealize/firestore_reference.dart';
 import 'package:bodealize/component/clear_button.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 
