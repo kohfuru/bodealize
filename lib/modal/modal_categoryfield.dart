@@ -1,17 +1,16 @@
 import 'package:bodealize/firestore_reference.dart';
 import 'package:bodealize/modal/categoryfield_content.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
-class SelectCategory extends StatefulWidget {
+class ModalCategoryField extends StatefulWidget {
 
-  const SelectCategory({super.key});
+  const ModalCategoryField({super.key});
 
   @override
-  State<SelectCategory> createState() => _SelectCategoryState();
+  State<ModalCategoryField> createState() => _ModalCategoryFieldState();
 }
 
-class _SelectCategoryState extends State<SelectCategory> {
+class _ModalCategoryFieldState extends State<ModalCategoryField> {
 
   @override
   Widget build(BuildContext context) {

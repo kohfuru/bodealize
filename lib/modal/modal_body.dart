@@ -41,7 +41,7 @@ class _ModalBodyState extends State<ModalBody> {
                 padding: 0,
               ),
               const Divider(color: Colors.grey),
-              SelectCategory(),
+              ModalCategoryField(),
               const Divider(color: Colors.grey),
               ModalTextField(
                 onPressed: null,
