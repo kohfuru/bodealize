@@ -1,6 +1,8 @@
+import 'package:bodealize/auth/read_uid.dart';
 import 'package:bodealize/category/category_navigationbar.dart';
 import 'package:bodealize/component/appbar.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class CategoryPage extends StatefulWidget {
@@ -11,8 +13,11 @@ class CategoryPage extends StatefulWidget {
 }
 
 class _CategoryPageState extends State<CategoryPage> {
-  final FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
-  late final CollectionReference _collectionReference = firebaseFirestore.collection('categories');
+  final FirebaseFirestore db = FirebaseFirestore.instance;
+  late final CollectionReference users = db.collection('users');
+  String uid = FirebaseAuth.instance.currentUser!.uid;
+  late DocumentReference userDoc = users.doc(uid);
+  late CollectionReference categories = userDoc.collection('categories');
 
   @override
   Widget build(BuildContext context) {
@@ -23,8 +28,10 @@ class _CategoryPageState extends State<CategoryPage> {
         backButton: true,
       ),
       body: StreamBuilder<QuerySnapshot>(
-        stream: _collectionReference.snapshots(),
+        stream: categories.snapshots(),
         builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
+
+
           if (snapshot.hasError) {
             return const Text('問題が発生しました');
           }
@@ -48,10 +55,10 @@ class _CategoryPageState extends State<CategoryPage> {
                       onTap: () {
                         for (var others in snapshot.data!.docs) {
                           if (others.id != document.id ) {
-                            _collectionReference.doc(others.id).update({'selected': false});
+                            categories.doc(others.id).update({'selected': false});
                           }
                         }
-                        _collectionReference.doc(document.id).update({'selected': true});
+                        categories.doc(document.id).update({'selected': true});
                         Navigator.of(context).pop();
                       },
                       highlightColor: Colors.white,
@@ -66,8 +73,7 @@ class _CategoryPageState extends State<CategoryPage> {
                     trailing: IconButton(
                       icon: const Icon(Icons.clear),
                       onPressed: () async {
-                        var db = FirebaseFirestore.instance;
-                        await db.collection('categories').doc(document.id).delete();
+                        await categories.doc(document.id).delete();
                       },
                     ),
                   ),
