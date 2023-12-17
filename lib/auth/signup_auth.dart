@@ -1,13 +1,13 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:bodealize/firestore_reference.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 class SignUpAuth {
+  FirestoreReference firestoreReference = FirestoreReference();
 
   Future<void> signup(String emailAddress, String password, String userName, String? gender) async {
-    var db = FirebaseFirestore.instance;
 
     try {
-      final credential = await FirebaseAuth.instance.createUserWithEmailAndPassword(
+      final credential = await firestoreReference.auth.createUserWithEmailAndPassword(
         email: emailAddress,
         password: password,
       );
@@ -23,7 +23,7 @@ class SignUpAuth {
         "gender": gender,
       };
 
-      db
+      firestoreReference.db
         .collection('users')
         .doc(uid)
         .set(user)

@@ -1,9 +1,12 @@
+import 'package:bodealize/firestore_reference.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 class LoginAuth {
+  FirestoreReference firestoreReference = FirestoreReference();
+
   Future<void> login(String emailAddress, String password) async {
     try {
-      await FirebaseAuth.instance.signInWithEmailAndPassword(
+      await firestoreReference.auth.signInWithEmailAndPassword(
         email: emailAddress,
         password: password
       );
