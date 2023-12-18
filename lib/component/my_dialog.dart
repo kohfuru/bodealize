@@ -1,16 +1,15 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-void showErrorDialog(context, String title, String text, VoidCallback? onPressed) {
+void myDialog(context, String title, String text, VoidCallback? onPressed) {
   showDialog(
     context: context,
     barrierDismissible: true,
     builder: (context) {
-      return CupertinoAlertDialog(
+      return AlertDialog(
         title: Text(title),
         content: Text(text),
         actions: [
-          CupertinoDialogAction(
+          FloatingActionButton(
             onPressed: onPressed,
             child: const Text('OK'),
           ),
