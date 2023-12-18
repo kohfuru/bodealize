@@ -1,4 +1,4 @@
-import 'package:bodealize/component/error_dialog.dart';
+import 'package:bodealize/component/my_dialog.dart';
 import 'package:bodealize/login/login_ui.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -15,7 +15,7 @@ class HandleSignup {
   ) async {
     try {
       if (emailText.isEmpty || passwordText.isEmpty || userName.isEmpty || gender == null) {
-        showErrorDialog(
+        myDialog(
           context,
           '入力エラー',
           '必要な情報を入力してください',
@@ -27,7 +27,7 @@ class HandleSignup {
       SignUpAuth sinUpAuth = SignUpAuth();
       await sinUpAuth.signup(emailText, passwordText, userName, gender);
 
-      showErrorDialog(
+      myDialog(
         context,
         'アカウントを作成しました',
         'ログイン画面にてログインしてください',
@@ -48,7 +48,7 @@ class HandleSignup {
           print('すでにこのメールアドレスでアカウントが作成されています');
         }
       }
-      showErrorDialog(
+      myDialog(
         context,
         'アカウント作成に失敗しました',
         errorMessage,
