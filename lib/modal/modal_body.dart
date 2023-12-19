@@ -1,5 +1,6 @@
 import 'package:bodealize/firestore_reference.dart';
 import 'package:bodealize/menu_list/menu_list.dart';
+import 'package:bodealize/modal/date_select.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:bodealize/modal/modal_textfield.dart';
@@ -38,13 +39,13 @@ class _ModalBodyState extends State<ModalBody> {
                 },
                 icon: Icons.list,
                 controller: _menuNameController,
-                hintText: 'メニュー名',
+                hintText: 'メニュー',
                 autofocus: true,
                 height: 50,
                 padding: 0,
               ),
               const Divider(color: Colors.grey),
-              const ModalCategoryField(),
+              const DateSelect(),
               const Divider(color: Colors.grey),
               ModalTextField(
                 onPressed: null,
