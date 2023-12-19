@@ -61,10 +61,15 @@ class _ModalBodyState extends State<ModalBody> {
                   QuerySnapshot snapshot = await firestoreReference.trueSelected.get();
                   CollectionReference menus = snapshot.docs.first.reference.collection('menus');
 
-                  await menus.add({
-                    'menuName': _menuNameController.text,
-                    'menuMemo': _memoController.text
-                  });
+                  if (_menuNameController.text.isEmpty || _memoController.text.isEmpty) {
+                    return;
+                  } else {
+                    await menus.add({
+                      'menuName': _menuNameController.text,
+                      'menuMemo': _memoController.text
+                    });
+                  }
+
                 },
                 text: '保存',
                 size: 15,
