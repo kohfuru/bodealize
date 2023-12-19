@@ -8,7 +8,6 @@ class FirestoreReference {
   CollectionReference get users => db.collection('users');
   String get uid => auth.currentUser!.uid;
   DocumentReference get userDoc => users.doc(uid);
-  CollectionReference get categories => userDoc.collection('categories');
-  Query get trueSelected => categories.where('selected', isEqualTo: true);
-  Stream<QuerySnapshot<Object?>> get snapshotTrueSelected =>  trueSelected.snapshots();
+  CollectionReference get selectedDay => userDoc.collection('selectedDay');
+  DocumentReference get lastSelectedDay => selectedDay.doc('lastSelectedDay');
 }
