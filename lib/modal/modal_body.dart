@@ -18,6 +18,25 @@ class _ModalBodyState extends State<ModalBody> {
   @override
   late BuildContext context;
 
+  SizedBox buttonBarContent(onPressed, backColor, text) {
+    return SizedBox(
+      width: 100,
+      child: TextButton(
+        onPressed: onPressed,
+        style: TextButton.styleFrom(
+          backgroundColor: backColor
+        ),
+        child: Text(
+          text,
+          style: const TextStyle(
+            color: Colors.white,
+            fontWeight: FontWeight.bold
+          ),
+        ),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     this.context =context;
@@ -54,7 +73,41 @@ class _ModalBodyState extends State<ModalBody> {
             ),
             const Divider(color: Colors.grey),
             MyButton(
-              onPressed: () async {},
+              onPressed: () async {
+                if (_menuNameController.text.isNotEmpty) {
+                  return showDialog(
+                    context: context,
+                    builder: (context) {
+                      return AlertDialog(
+                        backgroundColor: Colors.white,
+                        title: const Text('メニューを保存しました'),
+                        actions: [
+                          ButtonBar(
+                            alignment: MainAxisAlignment.center,
+                            children: [
+                              buttonBarContent(
+                                () {
+                                  Navigator.pop(context);
+                                  Navigator.pop(context);
+                                },
+                                Colors.black45,
+                                '完了'
+                              ),
+                              buttonBarContent(
+                                () => Navigator.pop(context),
+                                Colors.orange,
+                                '続けて入力'
+                              ),
+                            ],
+                          )
+                        ],
+                      );
+                    }
+                  );
+                } else {
+                  return;
+                }
+              },
               text: '保存',
               size: 15,
               paddingTop: 20,
