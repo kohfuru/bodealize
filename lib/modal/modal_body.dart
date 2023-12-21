@@ -94,7 +94,11 @@ class _ModalBodyState extends State<ModalBody> {
                                 '完了'
                               ),
                               buttonBarContent(
-                                () => Navigator.pop(context),
+                                () {
+                                  Navigator.pop(context);
+                                  _menuNameController.clear();
+                                  _memoController.clear();
+                                },
                                 Colors.orange,
                                 '続けて入力'
                               ),
