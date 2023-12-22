@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 
-import 'package:bodealize/firestore_reference.dart';
 import 'package:bodealize/menu_list/menu_list.dart';
 import 'package:bodealize/modal/save_menu.dart';
 import 'package:bodealize/modal/modal_textfield.dart';
 import '../component/my_button.dart';
-import 'date_select.dart';
 import 'modal_datefield.dart';
 
 class ModalBody extends StatefulWidget {
@@ -16,14 +14,10 @@ class ModalBody extends StatefulWidget {
 }
 
 class _ModalBodyState extends State<ModalBody> {
-  FirestoreReference firestoreReference = FirestoreReference();
   final _menuNameController = TextEditingController();
   final _memoController = TextEditingController();
   @override
   late BuildContext context;
-  late String? date;
-  SelectDate selectDate = SelectDate();
-  late Future<bool> checkDocExists;
 
   @override
   Widget build(BuildContext context) {

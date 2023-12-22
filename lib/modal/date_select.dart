@@ -9,13 +9,9 @@ class SelectDate {
   FirestoreReference firestoreReference = FirestoreReference();
   DateTime _date = DateTime.now();
 
-  Future<bool> checkCollectionExists() async {
-    final QuerySnapshot snapshot = await firestoreReference.selectedDay.get();
-    return snapshot.docs.isEmpty;
-  }
-
   Future<Null> selectDate(context) async {
     await initializeDateFormatting('ja_JP');
+    final QuerySnapshot snapshot = await firestoreReference.selectedDay.get();
 
     final DateTime? picked = await showDatePicker(
       context: context,
@@ -28,7 +24,7 @@ class SelectDate {
       _date = picked;
       String formattedDateTime = DateFormat('yyyy年MM月dd日（EEE）', 'ja_JP').format(_date);
 
-      if (await checkCollectionExists()) {
+      if (snapshot.docs.isEmpty) {
         firestoreReference.lastSelectedDay.set({'date': formattedDateTime});
       } else {
         firestoreReference.lastSelectedDay.update({'date': formattedDateTime});
