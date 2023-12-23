@@ -25,9 +25,15 @@ class SelectDate {
       String formattedDateTime = DateFormat('yyyy年MM月dd日（EEE）', 'ja_JP').format(_date);
 
       if (snapshot.docs.isEmpty) {
-        firestoreReference.lastSelectedDay.set({'date': formattedDateTime});
+        firestoreReference.lastSelectedDay.set({
+          'dateString': formattedDateTime,
+          'date': _date
+        });
       } else {
-        firestoreReference.lastSelectedDay.update({'date': formattedDateTime});
+        firestoreReference.lastSelectedDay.update({
+          'dateString': formattedDateTime,
+          'date': _date
+        });
       }
     }
   }

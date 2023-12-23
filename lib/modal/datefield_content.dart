@@ -35,7 +35,7 @@ class _DateFieldContentState extends State<DateFieldContent> {
                 children: snapshot.data!.docs.map((DocumentSnapshot document) {
                   Map<String, dynamic> data = document.data()! as Map<String, dynamic>;
                   return Text(
-                    data['date'],
+                    data['dateString'],
                     style: const TextStyle(
                       fontSize: 20
                     ),
