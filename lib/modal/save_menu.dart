@@ -6,22 +6,21 @@ import 'dialog_buttonbar_content.dart';
 
 class SaveMenu {
   FirestoreReference firestoreReference = FirestoreReference();
-  late String date;
+  late Timestamp date;
 
   Future saveMenu(TextEditingController menuName, TextEditingController memo, BuildContext context) async {
     if (menuName.text.isNotEmpty) {
       firestoreReference.lastSelectedDay.get().then((DocumentSnapshot doc) async {
         final data = doc.data() as Map<String, dynamic>;
         date = data['date'];
-        DocumentReference dateDoc = firestoreReference.menus.doc(date);
-        CollectionReference menuCol = dateDoc.collection('menu');
 
         var menuData = {
           'menuName': menuName.text,
           'memo': memo.text,
+          'date': date
         };
 
-        menuCol.add(menuData);
+        firestoreReference.menus.add(menuData);
 
         return showDialog(
           context: context,
