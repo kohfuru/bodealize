@@ -51,6 +51,12 @@ class _MenuWidgetState extends State<MenuWidget> {
               return Column(
                 children: [
                   ListTile(
+                    leading: IconButton(
+                      onPressed: () {
+                        firestoreReference.menus.doc(document.id).delete();
+                      },
+                      icon: const Icon(Icons.clear),
+                    ),
                     title: Text(menuName),
                     subtitle: Text(memo),
                   ),
