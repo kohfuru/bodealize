@@ -15,11 +15,7 @@ class _CalendarPageState extends State<CalendarPage> {
   Widget build(BuildContext context) {
     return const Stack(
       children: [
-        Column(
-          children: [
-            CalendarWidget(),
-          ],
-        ),
+        CalendarWidget(),
         InputModal(),
       ],
     );
