@@ -1,6 +1,7 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:table_calendar/table_calendar.dart';
+
+import 'menu.dart';
 
 class CalendarWidget extends StatefulWidget {
   const CalendarWidget({super.key});
@@ -16,30 +17,33 @@ class _CalendarWidgetState extends State<CalendarWidget> {
   DateTime? _selectedDay;
   final CalendarFormat _calendarFormat = CalendarFormat.month;
 
-  FirebaseFirestore db = FirebaseFirestore.instance;
-
   @override
   Widget build(BuildContext context) {
-    return TableCalendar(
-      headerStyle: const HeaderStyle(
-        formatButtonVisible: false,
-        titleCentered: true
-      ),
-      focusedDay: _focusedDay,
-      firstDay: _firstDay,
-      lastDay: _lastDay,
-      selectedDayPredicate: (day) {
-        return isSameDay(
-          _selectedDay, day
-        );
-      },
-      onDaySelected: (selectedDay, focusedDay) {
-        setState(() {
-          _selectedDay = selectedDay;
-          _focusedDay = focusedDay;
-        });
-      },
-      calendarFormat: _calendarFormat,
+    return Column(
+      children: [
+        TableCalendar(
+          headerStyle: const HeaderStyle(
+              formatButtonVisible: false,
+              titleCentered: true
+          ),
+          focusedDay: _focusedDay,
+          firstDay: _firstDay,
+          lastDay: _lastDay,
+          selectedDayPredicate: (day) {
+            return isSameDay(
+                _selectedDay, day
+            );
+          },
+          onDaySelected: (selectedDay, focusedDay) {
+            setState(() {
+              _selectedDay = selectedDay;
+              _focusedDay = focusedDay;
+            });
+          },
+          calendarFormat: _calendarFormat,
+        ),
+        Expanded(child: MenuWidget(focusedDay: _focusedDay)),
+      ],
     );
   }
 }
