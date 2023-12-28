@@ -23,6 +23,7 @@ class _MenuWidgetState extends State<MenuWidget> {
   late String focused;
   String menuName = '';
   String memo = '';
+  late bool flag;
 
   @override
   Widget build(BuildContext context) {
@@ -43,17 +44,19 @@ class _MenuWidgetState extends State<MenuWidget> {
             date = data['date'].toDate();
             dateStr = DateFormat('yyyy-MM-dd').format(date);
             focused = DateFormat('yyyy-MM-dd').format(widget.focusedDay);
+            DocumentReference menuDoc = firestoreReference.menus.doc(document.id);
 
             if (focused == dateStr) {
               menuName = data['menuName'];
               memo = data['memo'];
+              flag = data['flag'];
 
               return Column(
                 children: [
                   ListTile(
                     leading: IconButton(
                       onPressed: () {
-                        firestoreReference.menus.doc(document.id).delete();
+                        menuDoc.delete();
                       },
                       icon: const Icon(Icons.clear),
                     ),
@@ -62,6 +65,13 @@ class _MenuWidgetState extends State<MenuWidget> {
                       style: const TextStyle(fontSize: 20),
                     ),
                     subtitle: Text(memo),
+                    trailing: Checkbox(
+                      activeColor: Colors.blue,
+                      value: flag,
+                      onChanged: (bool? value) {
+                        menuDoc.update({'flag': value});
+                      },
+                    )
                   ),
                   const Divider(color: Colors.grey,)
                 ],
