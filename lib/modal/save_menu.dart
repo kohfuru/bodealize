@@ -17,7 +17,8 @@ class SaveMenu {
         var menuData = {
           'menuName': menuName.text,
           'memo': memo.text,
-          'date': date
+          'date': date,
+          'flag': false
         };
 
         firestoreReference.menus.add(menuData);
