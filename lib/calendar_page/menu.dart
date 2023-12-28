@@ -51,9 +51,22 @@ class _MenuWidgetState extends State<MenuWidget> {
               memo = data['memo'];
               flag = data['flag'];
 
+              Color? tileColor() {
+                if (flag == true) {
+                  return Colors.grey;
+                } else {
+                  return Colors.white10;
+                }
+              }
+
               return Column(
                 children: [
+                  const Divider(
+                    color: Colors.grey,
+                    height: 0,
+                  ),
                   ListTile(
+                    tileColor: tileColor(),
                     leading: IconButton(
                       onPressed: () {
                         menuDoc.delete();
@@ -73,7 +86,10 @@ class _MenuWidgetState extends State<MenuWidget> {
                       },
                     )
                   ),
-                  const Divider(color: Colors.grey,)
+                  const Divider(
+                    color: Colors.grey,
+                    height: 0,
+                  )
                 ],
               );
             } else {
