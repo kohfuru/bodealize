@@ -33,7 +33,8 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.blueGrey),
         useMaterial3: true,
       ),
-      home: isLogin ? const HomePage() : const Login(),
+      // home: isLogin ? const HomePage() : const Login(),
+      home: HomePage(),
     );
   }
 }
