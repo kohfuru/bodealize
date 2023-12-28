@@ -57,7 +57,10 @@ class _MenuWidgetState extends State<MenuWidget> {
                       },
                       icon: const Icon(Icons.clear),
                     ),
-                    title: Text(menuName),
+                    title: Text(
+                      menuName,
+                      style: const TextStyle(fontSize: 20),
+                    ),
                     subtitle: Text(memo),
                   ),
                   const Divider(color: Colors.grey,)
