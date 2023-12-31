@@ -21,26 +21,29 @@ class _CalendarWidgetState extends State<CalendarWidget> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        TableCalendar(
-          headerStyle: const HeaderStyle(
-              formatButtonVisible: false,
-              titleCentered: true
+        Container(
+          color: Colors.white,
+          child: TableCalendar(
+            headerStyle: const HeaderStyle(
+                formatButtonVisible: false,
+                titleCentered: true
+            ),
+            focusedDay: _focusedDay,
+            firstDay: _firstDay,
+            lastDay: _lastDay,
+            selectedDayPredicate: (day) {
+              return isSameDay(
+                  _selectedDay, day
+              );
+            },
+            onDaySelected: (selectedDay, focusedDay) {
+              setState(() {
+                _selectedDay = selectedDay;
+                _focusedDay = focusedDay;
+              });
+            },
+            calendarFormat: _calendarFormat,
           ),
-          focusedDay: _focusedDay,
-          firstDay: _firstDay,
-          lastDay: _lastDay,
-          selectedDayPredicate: (day) {
-            return isSameDay(
-                _selectedDay, day
-            );
-          },
-          onDaySelected: (selectedDay, focusedDay) {
-            setState(() {
-              _selectedDay = selectedDay;
-              _focusedDay = focusedDay;
-            });
-          },
-          calendarFormat: _calendarFormat,
         ),
         Expanded(child: MenuWidget(focusedDay: _focusedDay)),
       ],
