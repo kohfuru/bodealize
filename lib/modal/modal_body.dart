@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'package:bodealize/menu_list/menu_list.dart';
 import 'package:bodealize/modal/save_menu.dart';
 import 'package:bodealize/modal/modal_textfield.dart';
 import '../component/my_button.dart';
@@ -27,13 +26,7 @@ class _ModalBodyState extends State<ModalBody> {
         child: Column(
           children: [
             ModalTextField(
-              onPressed: () {
-                Navigator.of(context).push(
-                  MaterialPageRoute(
-                    builder: (context) => const MenuList(),
-                  ),
-                );
-              },
+              onPressed: null,
               icon: Icons.list,
               controller: _menuNameController,
               hintText: 'メニュー',
