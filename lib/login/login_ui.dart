@@ -20,6 +20,7 @@ class _LoginState extends State<Login> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: const AppBarWidget(
+        leading: SizedBox(),
         title: 'ログイン画面',
         actions: [],
         backButton: false,

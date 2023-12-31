@@ -13,6 +13,7 @@ Future showModal(BuildContext context) async {
             height: MediaQuery.of(context).size.height * 0.9,
             child: Scaffold(
                 appBar: AppBarWidget(
+                  leading: const SizedBox(),
                   title: '入力',
                   actions: [
                     InkWell(

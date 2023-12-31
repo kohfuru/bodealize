@@ -23,6 +23,7 @@ class _SignUpState extends State<SignUp> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: const AppBarWidget(
+        leading: SizedBox(),
         title: '新規登録',
         actions: [],
         backButton: true,
