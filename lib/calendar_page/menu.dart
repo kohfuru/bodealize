@@ -67,23 +67,29 @@ class _MenuWidgetState extends State<MenuWidget> {
                   ),
                   ListTile(
                     tileColor: tileColor(),
-                    leading: IconButton(
-                      onPressed: () {
-                        menuDoc.delete();
+                    // leading: IconButton(
+                    //   onPressed: () {
+                    //     menuDoc.delete();
+                    //   },
+                    //   icon: const Icon(Icons.clear),
+                    // ),
+                    leading: Checkbox(
+                      activeColor: Colors.blue,
+                      value: flag,
+                      onChanged: (bool? value) {
+                        menuDoc.update({'flag': value});
                       },
-                      icon: const Icon(Icons.clear),
                     ),
                     title: Text(
                       menuName,
                       style: const TextStyle(fontSize: 20),
                     ),
                     subtitle: Text(memo),
-                    trailing: Checkbox(
-                      activeColor: Colors.blue,
-                      value: flag,
-                      onChanged: (bool? value) {
-                        menuDoc.update({'flag': value});
+                    trailing: IconButton(
+                      onPressed: () {
+                        menuDoc.delete();
                       },
+                      icon: const Icon(Icons.clear),
                     )
                   ),
                   const Divider(
