@@ -89,7 +89,7 @@ class _MenuWidgetState extends State<MenuWidget> {
                       onPressed: () {
                         menuDoc.delete();
                       },
-                      icon: const Icon(Icons.clear),
+                      icon: const Icon(Icons.delete),
                     )
                   ),
                   const Divider(
