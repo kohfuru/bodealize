@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
+import 'package:bodealize/calendar_page/copy_menu.dart';
 import 'package:bodealize/firestore_reference.dart';
 
 class MenuWidget extends StatefulWidget {
@@ -18,6 +19,7 @@ class MenuWidget extends StatefulWidget {
 
 class _MenuWidgetState extends State<MenuWidget> {
   FirestoreReference firestoreReference = FirestoreReference();
+  CopyMenu copyMenu = CopyMenu();
   late DateTime date;
   late String dateStr;
   late String focused;
@@ -67,12 +69,6 @@ class _MenuWidgetState extends State<MenuWidget> {
                   ),
                   ListTile(
                     tileColor: tileColor(),
-                    // leading: IconButton(
-                    //   onPressed: () {
-                    //     menuDoc.delete();
-                    //   },
-                    //   icon: const Icon(Icons.clear),
-                    // ),
                     leading: Checkbox(
                       activeColor: Colors.blue,
                       value: flag,
@@ -85,12 +81,21 @@ class _MenuWidgetState extends State<MenuWidget> {
                       style: const TextStyle(fontSize: 20),
                     ),
                     subtitle: Text(memo),
-                    trailing: IconButton(
-                      onPressed: () {
-                        menuDoc.delete();
-                      },
-                      icon: const Icon(Icons.delete),
-                    )
+                    trailing: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        IconButton(
+                          onPressed: () => copyMenu.copyMenu(context, menuName, memo),
+                          icon: const Icon(Icons.content_copy)
+                        ),
+                        IconButton(
+                          onPressed: () {
+                            menuDoc.delete();
+                          },
+                          icon: const Icon(Icons.delete),
+                        )
+                      ],
+                    ),
                   ),
                   const Divider(
                     color: Colors.grey,
