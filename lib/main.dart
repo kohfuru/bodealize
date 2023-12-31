@@ -1,11 +1,10 @@
-// import 'package:bodealize/footer.dart';
 import 'package:flutter/material.dart';
-import 'package:bodealize/home.dart';
-import 'package:bodealize/login/login_ui.dart';
-
 import 'package:firebase_core/firebase_core.dart';
+
+import 'home.dart';
+import 'login/login_ui.dart';
+import 'firestore_reference.dart';
 import 'firebase_options.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 
 
 Future<void> main() async {
@@ -19,13 +18,9 @@ Future<void> main() async {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  bool checkLogin() {
-    return false;
-  }
-
   @override
   Widget build(BuildContext context) {
-    bool isLogin = checkLogin();
+    FirestoreReference firestoreReference = FirestoreReference();
     return  MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Bodealize',
@@ -33,8 +28,18 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.blueGrey),
         useMaterial3: true,
       ),
-      // home: isLogin ? const HomePage() : const Login(),
-      home: HomePage(),
+      home: StreamBuilder(
+        stream: firestoreReference.auth.authStateChanges(),
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return const SizedBox();
+          }
+          if (snapshot.hasData) {
+            return const HomePage();
+          }
+          return const Login();
+        },
+      ),
     );
   }
 }
