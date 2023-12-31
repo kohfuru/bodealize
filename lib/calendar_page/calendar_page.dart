@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:bodealize/calendar_page/calendar.dart';
-import 'package:bodealize/calendar_page/fab_modal.dart';
+import 'package:table_calendar/table_calendar.dart';
+
+import 'menu.dart';
 
 class CalendarPage extends StatefulWidget {
   const CalendarPage({super.key});
@@ -10,13 +11,41 @@ class CalendarPage extends StatefulWidget {
 }
 
 class _CalendarPageState extends State<CalendarPage> {
+  DateTime _focusedDay = DateTime.now();
+  final DateTime _firstDay = DateTime(2000);
+  final DateTime _lastDay = DateTime(2050);
+  DateTime? _selectedDay;
+  final CalendarFormat _calendarFormat = CalendarFormat.month;
 
   @override
   Widget build(BuildContext context) {
-    return const Stack(
+    return Column(
       children: [
-        CalendarWidget(),
-        InputModal(),
+        Container(
+          color: Colors.white,
+          child: TableCalendar(
+            headerStyle: const HeaderStyle(
+                formatButtonVisible: false,
+                titleCentered: true
+            ),
+            focusedDay: _focusedDay,
+            firstDay: _firstDay,
+            lastDay: _lastDay,
+            selectedDayPredicate: (day) {
+              return isSameDay(
+                  _selectedDay, day
+              );
+            },
+            onDaySelected: (selectedDay, focusedDay) {
+              setState(() {
+                _selectedDay = selectedDay;
+                _focusedDay = focusedDay;
+              });
+            },
+            calendarFormat: _calendarFormat,
+          ),
+        ),
+        Expanded(child: MenuWidget(focusedDay: _focusedDay)),
       ],
     );
   }
