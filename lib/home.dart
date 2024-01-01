@@ -1,4 +1,7 @@
+import 'dart:io';
+
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'firestore_reference.dart';
@@ -39,28 +42,54 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBarWidget(
         leading: IconButton(
           onPressed: () async {
-            await showDialog(
-              context: context,
-              builder: (BuildContext context) => AlertDialog(
-                title: const Text('サインアウトします'),
-                content: const Text('よろしいですか？'),
-                actions: <Widget>[
-                  TextButton(
-                    child: const Text('キャンセル'),
-                    onPressed: () {
-                      Navigator.of(context).pop();
-                    },
-                  ),
-                  TextButton(
-                    child: const Text('OK'),
-                    onPressed: () {
-                      firestoreReference.auth.signOut();
-                      Navigator.of(context).pop();
-                    },
-                  ),
-                ],
-              )
-            );
+
+            if (Platform.isAndroid) {
+              await showDialog(
+                context: context,
+                builder: (BuildContext context) => AlertDialog(
+                  title: const Text('サインアウトします'),
+                  content: const Text('よろしいですか？'),
+                  actions: <Widget>[
+                    TextButton(
+                      child: const Text('キャンセル'),
+                      onPressed: () {
+                        Navigator.of(context).pop();
+                      },
+                    ),
+                    TextButton(
+                      child: const Text('OK'),
+                      onPressed: () {
+                        firestoreReference.auth.signOut();
+                        Navigator.of(context).pop();
+                      },
+                    ),
+                  ],
+                )
+              );
+            } else if (Platform.isIOS) {
+              await showCupertinoDialog(
+                  context: context,
+                  builder: (BuildContext context) => CupertinoAlertDialog(
+                    title: const Text('サインアウトします'),
+                    content: const Text('よろしいですか？'),
+                    actions: <Widget>[
+                      TextButton(
+                        child: const Text('キャンセル'),
+                        onPressed: () {
+                          Navigator.of(context).pop();
+                        },
+                      ),
+                      TextButton(
+                        child: const Text('OK'),
+                        onPressed: () {
+                          firestoreReference.auth.signOut();
+                          Navigator.of(context).pop();
+                        },
+                      ),
+                    ],
+                  )
+              );
+            }
           },
           icon: const Icon(Icons.logout),
         ),
