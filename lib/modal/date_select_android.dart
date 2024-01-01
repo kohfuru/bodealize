@@ -5,36 +5,33 @@ import 'package:intl/date_symbol_data_local.dart';
 
 import '../firestore_reference.dart';
 
-class SelectDate {
+Future<Null> selectDateAndroid(context) async {
   FirestoreReference firestoreReference = FirestoreReference();
-  DateTime _date = DateTime.now();
+  DateTime date = DateTime.now();
+  await initializeDateFormatting('ja_JP');
+  final QuerySnapshot snapshot = await firestoreReference.selectedDay.get();
 
-  Future<Null> selectDate(context) async {
-    await initializeDateFormatting('ja_JP');
-    final QuerySnapshot snapshot = await firestoreReference.selectedDay.get();
+  final DateTime? picked = await showDatePicker(
+    context: context,
+    firstDate: DateTime(2000),
+    lastDate: DateTime(2050),
+    initialDate: date
+  );
 
-    final DateTime? picked = await showDatePicker(
-      context: context,
-      firstDate: DateTime(2000),
-      lastDate: DateTime(2050),
-      initialDate: _date
-    );
+  if (picked != null) {
+    date = picked;
+    String formattedDateTime = DateFormat('yyyy年MM月dd日（EEE）', 'ja_JP').format(date);
 
-    if (picked != null) {
-      _date = picked;
-      String formattedDateTime = DateFormat('yyyy年MM月dd日（EEE）', 'ja_JP').format(_date);
-
-      if (snapshot.docs.isEmpty) {
-        firestoreReference.lastSelectedDay.set({
-          'dateString': formattedDateTime,
-          'date': _date
-        });
-      } else {
-        firestoreReference.lastSelectedDay.update({
-          'dateString': formattedDateTime,
-          'date': _date
-        });
-      }
+    if (snapshot.docs.isEmpty) {
+      firestoreReference.lastSelectedDay.set({
+        'dateString': formattedDateTime,
+        'date': date
+      });
+    } else {
+      firestoreReference.lastSelectedDay.update({
+        'dateString': formattedDateTime,
+        'date': date
+      });
     }
   }
 }
