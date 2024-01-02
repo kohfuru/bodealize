@@ -45,7 +45,7 @@ class _HomePageState extends State<HomePage> {
         title: userName,
         actions: [
           IconButton(
-            onPressed: () => showModal(context),
+            onPressed: () => showInputModal(context),
             icon: const Icon(Icons.add)
           )
         ],

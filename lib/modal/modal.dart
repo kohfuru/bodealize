@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../component/appbar.dart';
 import 'modal_body.dart';
 
-Future showModal(BuildContext context) async {
+Future showInputModal(BuildContext context) async {
   await showModalBottomSheet(
       context: context,
       isScrollControlled: true,
