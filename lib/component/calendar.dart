@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:table_calendar/table_calendar.dart';
 
+import '../modal/select_date.dart';
+
 class CalendarWidget extends StatefulWidget {
   const CalendarWidget({super.key});
 
@@ -35,6 +37,7 @@ class _CalendarWidgetState extends State<CalendarWidget> {
           _selectedDay = selectedDay;
           _focusedDay = focusedDay;
         });
+        selectDate(context, _focusedDay);
       },
       calendarFormat: _calendarFormat,
     );
