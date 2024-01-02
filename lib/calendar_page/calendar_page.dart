@@ -1,6 +1,5 @@
 import 'package:bodealize/component/calendar.dart';
 import 'package:flutter/material.dart';
-import 'package:table_calendar/table_calendar.dart';
 
 import 'menu.dart';
 
@@ -20,7 +19,7 @@ class _CalendarPageState extends State<CalendarPage> {
       children: [
         Container(
           color: Colors.white,
-          child: CalendarWidget(),
+          child: const CalendarWidget(),
         ),
         Expanded(child: MenuWidget(focusedDay: _focusedDay)),
       ],
