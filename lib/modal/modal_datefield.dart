@@ -1,9 +1,7 @@
-import 'dart:io';
-import 'package:bodealize/modal/date_select_ios.dart';
+import 'package:bodealize/modal/date_select_modal.dart';
 import 'package:flutter/material.dart';
 
 import 'datefield_content.dart';
-import 'date_select_android.dart';
 
 class DateSelect extends StatefulWidget {
   const DateSelect({super.key});
@@ -21,11 +19,7 @@ class _DateSelectState extends State<DateSelect> {
       height: 50,
       child: InkWell(
         onTap: () {
-          if (Platform.isAndroid) {
-            selectDateAndroid(context);
-          } else if (Platform.isIOS) {
-            selectDateIos();
-          }
+          showDateSelectModal(context);
         },
         highlightColor: Colors.white,
         splashColor: Colors.transparent,
