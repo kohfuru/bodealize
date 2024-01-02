@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'component/sign_out.dart';
 import 'firestore_reference.dart';
 import 'component/appbar.dart';
-import 'modal/modal.dart';
+import 'modal/input_modal.dart';
 import 'calendar_page/calendar_page.dart';
 
 class HomePage extends StatefulWidget {
