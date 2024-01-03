@@ -21,7 +21,7 @@ class _CalendarPageState extends State<CalendarPage> {
           color: Colors.white,
           child: const CalendarWidget(),
         ),
-        Expanded(child: MenuWidget(focusedDay: _focusedDay)),
+        Expanded(child: MenuWidget()),
       ],
     );
   }
