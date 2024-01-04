@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
-import '../firestore_reference.dart';
+import '/firestore_reference.dart';
 
 class DateFieldContent extends StatefulWidget {
   const DateFieldContent({super.key});

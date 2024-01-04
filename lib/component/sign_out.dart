@@ -1,9 +1,8 @@
 import 'dart:io';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import '../firestore_reference.dart';
+import '/firestore_reference.dart';
 
 Future signOutDialog(BuildContext context) async {
   FirestoreReference firestoreReference = FirestoreReference();

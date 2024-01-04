@@ -1,9 +1,9 @@
-import 'package:bodealize/component/my_dialog.dart';
-import 'package:bodealize/login/login_ui.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
-import '../auth/signup_auth.dart';
+import '/component/my_dialog.dart';
+import '/login/login_ui.dart';
+import '/auth/signup_auth.dart';
 
 class HandleSignup {
   Future handleSignup(

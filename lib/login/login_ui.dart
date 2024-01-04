@@ -1,9 +1,10 @@
-import 'package:bodealize/component/appbar.dart';
-import 'package:bodealize/component/my_button.dart';
-import 'package:bodealize/login/handle_login.dart';
-import 'package:bodealize/component/auth_textfield.dart';
-import 'package:bodealize/login/to_signup.dart';
 import 'package:flutter/material.dart';
+
+import 'handle_login.dart';
+import 'to_signup.dart';
+import '/component/appbar.dart';
+import '/component/my_button.dart';
+import '/component/auth_textfield.dart';
 
 class Login extends StatefulWidget {
   const Login({super.key});

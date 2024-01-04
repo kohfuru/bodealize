@@ -1,5 +1,6 @@
-import 'package:bodealize/firestore_reference.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+
+import '/firestore_reference.dart';
 
 class LoginAuth {
   FirestoreReference firestoreReference = FirestoreReference();

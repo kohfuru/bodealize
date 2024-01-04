@@ -1,7 +1,6 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import 'package:bodealize/firestore_reference.dart';
+import '/firestore_reference.dart';
 
 class CopyMenu {
   FirestoreReference firestoreReference = FirestoreReference();

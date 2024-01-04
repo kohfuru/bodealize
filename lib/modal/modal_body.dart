@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-import 'package:bodealize/modal/save_menu.dart';
-import 'package:bodealize/modal/modal_textfield.dart';
-import '../component/my_button.dart';
+import 'save_menu.dart';
+import 'modal_textfield.dart';
 import 'modal_datefield.dart';
+import '/component/my_button.dart';
 
 class ModalBody extends StatefulWidget {
   const ModalBody({super.key});

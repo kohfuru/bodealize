@@ -1,5 +1,6 @@
-import 'package:bodealize/component/clear_button.dart';
 import 'package:flutter/material.dart';
+
+import '/component/clear_button.dart';
 
 class ModalTextField extends StatefulWidget {
   final TextEditingController controller;

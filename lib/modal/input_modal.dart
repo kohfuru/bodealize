@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../component/appbar.dart';
+import '/component/appbar.dart';
 import 'modal_body.dart';
 
 Future showInputModal(BuildContext context) async {

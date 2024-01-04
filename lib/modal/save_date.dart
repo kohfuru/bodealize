@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:intl/intl.dart';
 import 'package:intl/date_symbol_data_local.dart';
 
-import '../firestore_reference.dart';
+import '/firestore_reference.dart';
 
 Future<Null> saveDate(BuildContext context, DateTime focusedDay) async {
   FirestoreReference firestoreReference = FirestoreReference();

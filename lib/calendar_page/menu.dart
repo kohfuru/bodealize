@@ -2,7 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
-import '/calendar_page/copy_menu.dart';
+import 'copy_menu.dart';
 import '/firestore_reference.dart';
 
 class MenuWidget extends StatefulWidget {

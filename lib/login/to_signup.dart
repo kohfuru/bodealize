@@ -1,6 +1,7 @@
-import 'package:bodealize/signup/signup_ui.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+
+import '/signup/signup_ui.dart';
 
 class ToSignUp extends StatelessWidget {
   const ToSignUp({super.key});

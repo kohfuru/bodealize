@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
-import 'package:bodealize/firestore_reference.dart';
+import '/firestore_reference.dart';
 import 'dialog_buttonbar_content.dart';
 
 class SaveMenu {
