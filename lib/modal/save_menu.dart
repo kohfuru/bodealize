@@ -1,8 +1,10 @@
+import 'dart:io';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '/firestore_reference.dart';
-import 'dialog_buttonbar_content.dart';
 
 class SaveMenu {
   FirestoreReference firestoreReference = FirestoreReference();
@@ -13,6 +15,36 @@ class SaveMenu {
       firestoreReference.lastSelectedDay.get().then((DocumentSnapshot doc) async {
         final data = doc.data() as Map<String, dynamic>;
         date = data['date'];
+        Text title = const Text('メニューを保存しました');
+
+        TextButton completeButton = TextButton(
+          onPressed: () {
+            Navigator.pop(context);
+            Navigator.pop(context);
+          },
+          child: const Text(
+            '完了',
+            style: TextStyle(
+              fontSize: 17
+            ),
+          )
+        );
+
+        TextButton continueButton = TextButton(
+          onPressed: () {
+            Navigator.pop(context);
+            menuName.clear();
+            memo.clear();
+          },
+          child: const Text(
+            '続けて入力',
+            style: TextStyle(
+              fontSize: 17,
+            ),
+          )
+        );
+
+        List<TextButton> actions = [completeButton, continueButton];
 
         var menuData = {
           'menuName': menuName.text,
@@ -23,39 +55,28 @@ class SaveMenu {
 
         firestoreReference.menus.add(menuData);
 
-        return showDialog(
-          context: context,
-          builder: (context) {
-            return AlertDialog(
-              backgroundColor: Colors.white,
-              title: const Text('メニューを保存しました'),
-              actions: [
-                ButtonBar(
-                  alignment: MainAxisAlignment.center,
-                  children: [
-                    buttonBarContent(
-                      () {
-                        Navigator.pop(context);
-                        Navigator.pop(context);
-                      },
-                      Colors.black45,
-                      '完了'
-                    ),
-                    buttonBarContent(
-                      () {
-                        Navigator.pop(context);
-                        menuName.clear();
-                        memo.clear();
-                      },
-                      Colors.orange,
-                      '続けて入力'
-                    ),
-                  ],
-                )
-              ],
-            );
-          }
-        );
+        if (Platform.isAndroid) {
+          await showDialog(
+            context: context,
+            builder: (context) {
+              return AlertDialog(
+                backgroundColor: Colors.white,
+                title: title,
+                actions: actions,
+              );
+            }
+          );
+        } else if (Platform.isIOS) {
+          await showCupertinoDialog(
+            context: context,
+            builder: (context) {
+              return CupertinoAlertDialog(
+                title: title,
+                actions: actions,
+              );
+            }
+          );
+        }
       });
     } else {
       return;
