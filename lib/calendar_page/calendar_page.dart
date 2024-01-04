@@ -1,7 +1,7 @@
-import 'package:bodealize/component/calendar.dart';
 import 'package:flutter/material.dart';
 
-import 'menu.dart';
+import '/component/calendar.dart';
+import '/component/fetch_selectedDay.dart';
 
 class CalendarPage extends StatefulWidget {
   const CalendarPage({super.key});
@@ -11,8 +11,6 @@ class CalendarPage extends StatefulWidget {
 }
 
 class _CalendarPageState extends State<CalendarPage> {
-  DateTime _focusedDay = DateTime.now();
-
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -21,7 +19,7 @@ class _CalendarPageState extends State<CalendarPage> {
           color: Colors.white,
           child: const CalendarWidget(),
         ),
-        Expanded(child: MenuWidget()),
+        const Expanded(child: FetchSelectedDay()),
       ],
     );
   }

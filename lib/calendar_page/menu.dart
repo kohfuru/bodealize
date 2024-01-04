@@ -2,14 +2,14 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
-import 'package:bodealize/calendar_page/copy_menu.dart';
-import 'package:bodealize/firestore_reference.dart';
+import '/calendar_page/copy_menu.dart';
+import '/firestore_reference.dart';
 
 class MenuWidget extends StatefulWidget {
-  final DateTime focusedDay;
+  final DateTime focused;
 
   const MenuWidget({
-    required this.focusedDay,
+    required this.focused,
     super.key
   });
 
@@ -22,11 +22,13 @@ class _MenuWidgetState extends State<MenuWidget> {
   CopyMenu copyMenu = CopyMenu();
   late DateTime date;
   late String dateStr;
-  late String focused;
+  late String focusedStr;
   String menuName = '';
   String memo = '';
   late bool flag;
 
+  String dateFormat(data) => DateFormat('yyyy-MM-dd', 'ja_JP').format(data);
+  
   @override
   Widget build(BuildContext context) {
     return StreamBuilder(
@@ -41,14 +43,15 @@ class _MenuWidgetState extends State<MenuWidget> {
         }
 
         return ListView(
+          shrinkWrap: true,
           children: snapshot.data!.docs.map((DocumentSnapshot document) {
             Map<String, dynamic> data = document.data()! as Map<String, dynamic>;
             date = data['date'].toDate();
-            dateStr = DateFormat('yyyy-MM-dd').format(date);
-            focused = DateFormat('yyyy-MM-dd').format(widget.focusedDay);
+            dateStr = dateFormat(date);
+            focusedStr = dateFormat(widget.focused);
             DocumentReference menuDoc = firestoreReference.menus.doc(document.id);
 
-            if (focused == dateStr) {
+            if (dateStr == focusedStr) {
               menuName = data['menuName'];
               memo = data['memo'];
               flag = data['flag'];
