@@ -18,6 +18,7 @@ class MenuWidget extends StatefulWidget {
 }
 
 class _MenuWidgetState extends State<MenuWidget> {
+
   FirestoreReference firestoreReference = FirestoreReference();
   CopyMenu copyMenu = CopyMenu();
   late DateTime date;
@@ -27,7 +28,7 @@ class _MenuWidgetState extends State<MenuWidget> {
   String memo = '';
   late bool flag;
 
-  String dateFormat(data) => DateFormat('yyyy-MM-dd', 'ja_JP').format(data);
+  String dateFormat(data) => DateFormat('yyyy-MM-dd').format(data);
   
   @override
   Widget build(BuildContext context) {
@@ -42,74 +43,75 @@ class _MenuWidgetState extends State<MenuWidget> {
           return const Text("Loading");
         }
 
-        return ListView(
-          shrinkWrap: true,
-          children: snapshot.data!.docs.map((DocumentSnapshot document) {
-            Map<String, dynamic> data = document.data()! as Map<String, dynamic>;
-            date = data['date'].toDate();
-            dateStr = dateFormat(date);
-            focusedStr = dateFormat(widget.focused);
-            DocumentReference menuDoc = firestoreReference.menus.doc(document.id);
+        return SingleChildScrollView(
+          child: Column(
+            children: snapshot.data!.docs.map((DocumentSnapshot document) {
+              Map<String, dynamic> data = document.data()! as Map<String, dynamic>;
+              date = data['date'].toDate();
+              dateStr = dateFormat(date);
+              focusedStr = dateFormat(widget.focused);
+              DocumentReference menuDoc = firestoreReference.menus.doc(document.id);
 
-            if (dateStr == focusedStr) {
-              menuName = data['menuName'];
-              memo = data['memo'];
-              flag = data['flag'];
+              if (dateStr == focusedStr) {
+                menuName = data['menuName'];
+                memo = data['memo'];
+                flag = data['flag'];
 
-              Color? tileColor() {
-                if (flag == true) {
-                  return Colors.grey;
-                } else {
-                  return Colors.white10;
+                Color? tileColor() {
+                  if (flag == true) {
+                    return Colors.grey;
+                  } else {
+                    return Colors.white10;
+                  }
                 }
-              }
 
-              return Column(
-                children: [
-                  const Divider(
-                    color: Colors.grey,
-                    height: 0,
-                  ),
-                  ListTile(
-                    tileColor: tileColor(),
-                    leading: Checkbox(
-                      activeColor: Colors.blue,
-                      value: flag,
-                      onChanged: (bool? value) {
-                        menuDoc.update({'flag': value});
-                      },
+                return Column(
+                  children: [
+                    const Divider(
+                      color: Colors.grey,
+                      height: 0,
                     ),
-                    title: Text(
-                      menuName,
-                      style: const TextStyle(fontSize: 20),
+                    ListTile(
+                      tileColor: tileColor(),
+                      leading: Checkbox(
+                        activeColor: Colors.blue,
+                        value: flag,
+                        onChanged: (bool? value) {
+                          menuDoc.update({'flag': value});
+                        },
+                      ),
+                      title: Text(
+                        menuName,
+                        style: const TextStyle(fontSize: 20),
+                      ),
+                      subtitle: Text(memo),
+                      trailing: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          IconButton(
+                              onPressed: () => copyMenu.copyMenu(context, menuName, memo),
+                              icon: const Icon(Icons.content_copy)
+                          ),
+                          IconButton(
+                            onPressed: () {
+                              menuDoc.delete();
+                            },
+                            icon: const Icon(Icons.delete),
+                          )
+                        ],
+                      ),
                     ),
-                    subtitle: Text(memo),
-                    trailing: Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        IconButton(
-                          onPressed: () => copyMenu.copyMenu(context, menuName, memo),
-                          icon: const Icon(Icons.content_copy)
-                        ),
-                        IconButton(
-                          onPressed: () {
-                            menuDoc.delete();
-                          },
-                          icon: const Icon(Icons.delete),
-                        )
-                      ],
-                    ),
-                  ),
-                  const Divider(
-                    color: Colors.grey,
-                    height: 0,
-                  )
-                ],
-              );
-            } else {
-              return Container();
-            }
-          }).toList().cast(),
+                    const Divider(
+                      color: Colors.grey,
+                      height: 0,
+                    )
+                  ],
+                );
+              } else {
+                return Container();
+              }
+            }).toList().cast(),
+          ),
         );
       }
     );
