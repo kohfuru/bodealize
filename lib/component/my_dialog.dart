@@ -4,6 +4,17 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 Future myDialog(context, String title, String text, VoidCallback? onPressed) async {
+
+  TextButton okButton = TextButton(
+    onPressed: onPressed,
+    child: const Text(
+      'OK',
+      style: TextStyle(
+          fontSize: 18
+      ),
+    ),
+  );
+
   if (Platform.isAndroid) {
     await showDialog(
       context: context,
@@ -12,12 +23,7 @@ Future myDialog(context, String title, String text, VoidCallback? onPressed) asy
         return AlertDialog(
           title: Text(title),
           content: Text(text),
-          actions: [
-            FloatingActionButton(
-              onPressed: onPressed,
-              child: const Text('OK'),
-            ),
-          ],
+          actions: [okButton],
         );
       }
     );
@@ -28,17 +34,7 @@ Future myDialog(context, String title, String text, VoidCallback? onPressed) asy
         return CupertinoAlertDialog(
           title: Text(title),
           content: Text(text),
-          actions: [
-            TextButton(
-              onPressed: onPressed,
-              child: const Text(
-                'OK',
-                style: TextStyle(
-                  fontSize: 18
-                ),
-              ),
-            ),
-          ],
+          actions: [okButton],
         );
       }
     );
