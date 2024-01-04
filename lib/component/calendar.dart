@@ -19,27 +19,29 @@ class _CalendarWidgetState extends State<CalendarWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return TableCalendar(
-      headerStyle: const HeaderStyle(
-          formatButtonVisible: false,
-          titleCentered: true
+    return SingleChildScrollView(
+      child: TableCalendar(
+        headerStyle: const HeaderStyle(
+            formatButtonVisible: false,
+            titleCentered: true
+        ),
+        focusedDay: _focusedDay,
+        firstDay: _firstDay,
+        lastDay: _lastDay,
+        selectedDayPredicate: (day) {
+          return isSameDay(
+              _selectedDay, day
+          );
+        },
+        onDaySelected: (selectedDay, focusedDay) {
+          setState(() {
+            _selectedDay = selectedDay;
+            _focusedDay = focusedDay;
+          });
+          saveDate(context, _focusedDay);
+        },
+        calendarFormat: _calendarFormat,
       ),
-      focusedDay: _focusedDay,
-      firstDay: _firstDay,
-      lastDay: _lastDay,
-      selectedDayPredicate: (day) {
-        return isSameDay(
-            _selectedDay, day
-        );
-      },
-      onDaySelected: (selectedDay, focusedDay) {
-        setState(() {
-          _selectedDay = selectedDay;
-          _focusedDay = focusedDay;
-        });
-        saveDate(context, _focusedDay);
-      },
-      calendarFormat: _calendarFormat,
     );
   }
 }
