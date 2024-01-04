@@ -31,7 +31,7 @@ class _ModalBodyState extends State<ModalBody> {
               controller: _menuNameController,
               hintText: 'メニュー',
               autofocus: true,
-              height: 50,
+              height: 60,
               padding: 0,
             ),
             const Divider(color: Colors.grey),
