@@ -10,14 +10,14 @@ Future signOutDialog(BuildContext context) async {
   Text title = const Text('サインアウトします');
   Text content = const Text('よろしいですか？');
 
-  Widget cancelButton = TextButton(
+  TextButton cancelButton = TextButton(
     child: const Text('キャンセル'),
     onPressed: () {
       Navigator.of(context).pop();
     },
   );
 
-  Widget okButton = TextButton(
+  TextButton okButton = TextButton(
     child: const Text('OK'),
     onPressed: () {
       firestoreReference.auth.signOut();
@@ -25,7 +25,7 @@ Future signOutDialog(BuildContext context) async {
     },
   );
 
-  List<Widget> actions = [cancelButton, okButton];
+  List<TextButton> actions = [cancelButton, okButton];
 
   if (Platform.isAndroid) {
     await showDialog(
