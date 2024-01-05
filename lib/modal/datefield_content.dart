@@ -30,7 +30,7 @@ class _DateFieldContentState extends State<DateFieldContent> {
           return Padding(
             padding: const EdgeInsets.only(top: 10),
             child: SizedBox(
-              width: MediaQuery.of(context).size.width * 0.7,
+              width: MediaQuery.of(context).size.width * 0.6,
               child: ListView(
                 children: snapshot.data!.docs.map((DocumentSnapshot document) {
                   Map<String, dynamic> data = document.data()! as Map<String, dynamic>;
