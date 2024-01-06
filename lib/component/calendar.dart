@@ -38,7 +38,7 @@ class _CalendarWidgetState extends State<CalendarWidget> {
             _selectedDay = selectedDay;
             _focusedDay = focusedDay;
           });
-          saveDate(context, _focusedDay);
+          saveDate(_focusedDay);
         },
         calendarFormat: _calendarFormat,
       ),
