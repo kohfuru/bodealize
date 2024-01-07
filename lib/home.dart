@@ -1,3 +1,4 @@
+import 'package:bodealize/pfc/pfc.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -17,6 +18,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   FirestoreReference firestoreReference = FirestoreReference();
   String userName = '';
+  int selectedIndex = 0;
 
   @override
   void initState() {
@@ -30,6 +32,22 @@ class _HomePageState extends State<HomePage> {
       setState(() {
         userName = user.displayName!;
       });
+    }
+  }
+
+  void onTapped(int index) {
+    setState(() {
+      selectedIndex = index;
+    });
+  }
+
+  Widget getBody(int index) {
+    if (index == 0) {
+      return const CalendarPage();
+    } else if (index == 1) {
+      return const PfcPage();
+    } else {
+      return const SizedBox();
     }
   }
 
@@ -51,7 +69,21 @@ class _HomePageState extends State<HomePage> {
         ],
         backButton: false,
       ),
-      body: const CalendarPage(),
+      body: getBody(selectedIndex),
+      bottomNavigationBar: BottomNavigationBar(
+        backgroundColor: Colors.white,
+          items: const [
+            BottomNavigationBarItem(
+              icon: Icon(Icons.home),
+              label: 'Home'
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.description),
+              label: 'PFC'
+            ),
+          ],
+        onTap: onTapped,
+        ),
     );
   }
 }
