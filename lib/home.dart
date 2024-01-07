@@ -75,6 +75,7 @@ class _HomePageState extends State<HomePage> {
           border: Border(top: BorderSide())
         ),
         child: BottomNavigationBar(
+          currentIndex: selectedIndex,
           backgroundColor: Colors.white,
           items: const [
             BottomNavigationBarItem(
