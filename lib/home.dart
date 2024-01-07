@@ -70,20 +70,25 @@ class _HomePageState extends State<HomePage> {
         backButton: false,
       ),
       body: getBody(selectedIndex),
-      bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: Colors.white,
+      bottomNavigationBar: Container(
+        decoration: const BoxDecoration(
+          border: Border(top: BorderSide())
+        ),
+        child: BottomNavigationBar(
+          backgroundColor: Colors.white,
           items: const [
             BottomNavigationBarItem(
-              icon: Icon(Icons.home),
-              label: 'Home'
+                icon: Icon(Icons.home),
+                label: 'Home'
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.description),
-              label: 'PFC'
+                icon: Icon(Icons.description),
+                label: 'PFC'
             ),
           ],
-        onTap: onTapped,
+          onTap: onTapped,
         ),
+      ),
     );
   }
 }
